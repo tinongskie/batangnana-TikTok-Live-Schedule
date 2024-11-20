@@ -23,7 +23,7 @@
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin: 0;
         }
 
@@ -35,9 +35,9 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex; /* Flexbox for side-by-side layout */
+            display: flex;
+            flex-wrap: wrap; /* Adjust layout on smaller screens */
             gap: 20px;
-            align-items: flex-start;
         }
 
         /* Schedule section styling */
@@ -66,11 +66,10 @@
 
         /* Image styling */
         .image-container img {
-            max-width: 100%;
-            height: auto;
+            max-width: 100%; /* Ensures the image is responsive */
+            height: auto; /* Maintains aspect ratio */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            flex: 1;
         }
 
         /* Footer styling */
@@ -89,6 +88,48 @@
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column; /* Stack the elements vertically */
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .schedule {
+                flex: 1;
+            }
+
+            .schedule h2 {
+                font-size: 1.5em;
+            }
+
+            footer {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container img {
+                max-width: 80%; /* Smaller size for very small screens */
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .schedule h2 {
+                font-size: 1.2em;
+            }
+
+            .schedule li {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -118,7 +159,7 @@
         </div>
     </main>
     <footer>
-        <p>© 2024 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/batangnana" target="_blank">TikTok</a></p>
+        <p>© 2024 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_blank">TikTok</a></p>
         <p>Follow me on Facebook! <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_blank">Facebook</a></p>
     </footer>
 </body>
