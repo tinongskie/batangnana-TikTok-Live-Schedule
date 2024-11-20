@@ -29,34 +29,48 @@
 
         /* Main content styling */
         main {
-            max-width: 600px;
+            max-width: 800px;
             margin: 20px auto;
-            text-align: center;
             padding: 20px;
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex; /* Flexbox for side-by-side layout */
+            gap: 20px;
+            align-items: flex-start;
         }
 
-        h2 {
+        /* Schedule section styling */
+        .schedule {
+            flex: 2;
+        }
+
+        .schedule h2 {
             font-size: 1.8em;
             color: #ff0050;
             margin-bottom: 10px;
         }
 
-        p {
-            font-size: 1.2em;
+        .schedule p, .schedule ul, .schedule li {
             margin: 10px 0;
         }
 
-        ul {
+        .schedule ul {
             list-style-type: none;
             padding: 0;
         }
 
-        li {
+        .schedule li {
             font-size: 1.1em;
-            margin: 10px 0;
+        }
+
+        /* Image styling */
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex: 1;
         }
 
         /* Footer styling */
@@ -83,22 +97,29 @@
         <h1>Batangnana TikTok Live Schedule</h1>
     </header>
     <main>
-        <h2>Upcoming Lives</h2>
-        <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
-        <ul>
-            <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
-		<li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
-            <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
-		<li><strong>Thursday</strong> 8:00 PM - 10:00 PM</li>
-            <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
-            <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
-	<p>schedule updated last 11/20/2024 (Wednesday)</p>
-        </ul>
-        <p>Make sure to follow me on TikTok for updates and surprises!</p>
+        <!-- Schedule Section -->
+        <div class="schedule">
+            <h2>Upcoming Lives</h2>
+            <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
+            <ul>
+                <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
+            </ul>
+            <p>Schedule updated last 11/20/2024 (Wednesday)</p>
+            <p>Make sure to follow me on TikTok for updates and surprises!</p>
+        </div>
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="batangnana.png" alt="Batangnana Live Stream">
+        </div>
     </main>
     <footer>
         <p>© 2024 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/batangnana" target="_blank">TikTok</a></p>
-	<p> Follow me on Facebook! <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_blank">Facebook</a></p>
+        <p>Follow me on Facebook! <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_blank">Facebook</a></p>
     </footer>
 </body>
 </html>
