@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth or Dare (Tagalog Version)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .game-container {
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        input {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Truth or Dare (Tagalog Version)</h1>
+    <div class="game-container">
+        <button id="truthBtn">Truth</button>
+        <button id="dareBtn">Dare</button>
+        <div class="output" id="output"></div>
+        <div id="buttonsContainer" style="display: none;">
+            <button id="doneBtn">Done</button>
+            <button id="forfeitBtn">Forfeit</button>
+        </div>
+        <div id="answerButtons" style="display: none;">
+            <button id="ooBtn">Oo</button>
+            <button id="hindiBtn">Hindi</button>
+        </div>
+        <div id="inputContainer" style="display: none;">
+            <input type="text" id="textInput" placeholder="Type your answer here..." />
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="doneSound" src="done.mp3"></audio>
+    <audio id="forfeitSound" src="forfeit.mp3"></audio>
+    <audio id="correctSound" src="correct.mp3"></audio>
+    <audio id="wrongSound" src="wrong.mp3"></audio>
+
+    <script>
+        // 50 Truth Questions
+        const truths = [
+            "May jowa ka na ba?",
+            "Sino yung crush mo?", 
+            "Na ranasan mo na ba or naki pag date ka na?",
+            "Nag-cheat ka na ba sa jowa mo?",
+            "Nakapag-date ka na ba sa kaklase mo?",
+            "May ex ka na ba?",
+            "Pumayag ka bang mag-solo sa date?",
+            "May secret kang hindi pa nasasabi sa jowa mo?",
+            "Saan mo unang nakilala ang jowa mo?",
+            "Nagkakaroon ka ba ng mga tampuhan sa jowa mo?",
+            "Nag-usap na ba kayo tungkol sa future?",
+            "Bakit kayo naghiwalay ng ex mo?",
+            "Ano ang pinakapaborito mong ginagawa kasama ang jowa mo?",
+            "Paano mo ipapakita ang pagmamahal mo sa jowa mo?",
+            "Na-in love ka na ba ng sobra sa jowa mo?",
+            "Nagka-patch up na ba kayo pagkatapos mag-away?",
+            "Pumayag ka bang maghintay para sa jowa mo?",
+            "Nag-break na ba kayo tapos nagbalikan?",
+            "Ano ang pinakamalaking sakripisyo na ginawa mo para sa jowa mo?",
+            "Saan ka unang nagka-crush?",
+            "Nagawa mo na bang sumaya ang jowa mo kahit sa simpleng bagay?",
+            "Nakapagbigay ka na ba ng regalo na hindi inaasahan?",
+            "Nagkakaroon ka ba ng trust issues sa jowa mo?",
+            "Pumayag ka bang magsakripisyo para sa love?",
+            "Paano mo sasabihin sa jowa mo kung may problema kayo?",
+            "Pinipili mo ba ang jowa mo kaysa sa mga barkada?",
+            "Sino ang unang nag-sorry sa inyo ng jowa mo after mag-away?",
+            "Pumayag ka bang magsakripisyo para sa kasamahan ng relationship?",
+            "Naghanap ka na ba ng mga paraan para magpatibay ang relationship?",
+            "Pumayag ka bang magpatawad sa jowa mo?",
+            "Sino ang mas importante sa'yo, pamilya o jowa?",
+            "Gusto mo ba magka-anak balang araw?",
+            "Mahal mo ba talaga ang jowa mo?",
+            "Masaya ka ba sa relasyon mo?",
+            "Naghanap ka ba ng paraan para maging masaya sa iyong jowa?"
+        ];
+
+        // 50 Dare Questions
+        const dares = [
+            "Mag hugas ka na!",
+            "Sayaw ka ng chicken dance!",
+            "Mag I love you ka sa katabi mo!",
+            "Sabihin mo sa katabi mo na pwede mo bang sabihin yung 'I love the view' na wala yung 'the' tapos mag I love you too ka!",
+            "Sumayaw ka sa harap ng mirror ng 1 minuto!",
+            "Mag-video call ka sa jowa mo at sabihin 'Mahal kita!'",
+            "Mag-pose ka ng superman sa harap ng salamin!",
+            "Mag-salita ng mga words na baliktad!",
+            "Pumunta ka sa harap ng grupo at mag-stand ng hindi gumagalaw!",
+            "Sumayaw ka ng 30 seconds ng hindi tumigil!",
+            "Magbaliktad ka ng damit sa harap ng iba!",
+            "Magsuot ka ng damit na hindi mo pa nasuot kahit minsan!",
+            "Magpanggap kang may sakit at magtawag ng tulong!",
+            "Magbigay ka ng random na compliment sa katabi mo!",
+            "Magsimula ng isang kanta at magtuloy-tuloy ng 1 minuto!",
+            "Magpanggap kang si Spiderman at gumawa ng mga moves!",
+            "Maglakad ng backward sa buong kwarto!",
+            "Sumigaw ka ng malakas ng 'Mahal kita!'",
+            "Magsimula ng isang dance challenge na sarili mong sayaw!",
+            "Magbaliktad ka ng damit sa harap ng iba!",
+            "Magbigay ng advice sa iba tungkol sa relationships!",
+            "Mag-take ng selfie sa harap ng salamin!",
+            "Magbigay ng random compliment sa katabi mo!",
+            "Magtanong ng isang bagay tungkol sa jowa mo!",
+            "Mag-video call sa jowa mo at magpanggap na may karelasyon!",
+            "Mag-sulat ng love letter sa isang paborito mong tao!"
+        ];
+
+        // Buttons and Output
+        const truthBtn = document.getElementById("truthBtn");
+        const dareBtn = document.getElementById("dareBtn");
+        const output = document.getElementById("output");
+        const doneBtn = document.getElementById("doneBtn");
+        const forfeitBtn = document.getElementById("forfeitBtn");
+        const answerButtons = document.getElementById("answerButtons");
+        const ooBtn = document.getElementById("ooBtn");
+        const hindiBtn = document.getElementById("hindiBtn");
+        const textInput = document.getElementById("textInput");
+        const inputContainer = document.getElementById("inputContainer");
+
+        let truthIndex = 0;
+        let dareIndex = 0;
+
+        // Randomize function to avoid repeats
+        function getRandomIndex(arr, index) {
+            let randomIndex = Math.floor(Math.random() * arr.length);
+            while (randomIndex === index) {
+                randomIndex = Math.floor(Math.random() * arr.length);
+            }
+            return randomIndex;
+        }
+
+        // Truth Button Click
+        truthBtn.addEventListener("click", function() {
+            truthIndex = getRandomIndex(truths, truthIndex);
+            output.textContent = truths[truthIndex];
+            showNextButtons();
+            document.getElementById("answerButtons").style.display = "block";
+        });
+
+        // Dare Button Click
+        dareBtn.addEventListener("click", function() {
+            dareIndex = getRandomIndex(dares, dareIndex);
+            output.textContent = dares[dareIndex];
+            showNextButtons();
+            document.getElementById("answerButtons").style.display = "none";
+        });
+
+        function showNextButtons() {
+            document.getElementById("buttonsContainer").style.display = "block";
+            answerButtons.style.display = "none";
+            inputContainer.style.display = "none";
+        }
+
+        // Done Button Click
+        doneBtn.addEventListener("click", function() {
+            // Play the 'done' sound
+            document.getElementById("doneSound").play();
+            output.textContent = "Next question, choose Truth or Dare!";
+            resetGame();
+        });
+
+        // Forfeit Button Click
+        forfeitBtn.addEventListener("click", function() {
+            // Play the 'forfeit' sound
+            document.getElementById("forfeitSound").play();
+            output.textContent = "You forfeited! Next question, choose Truth or Dare!";
+            resetGame();
+        });
+
+        // Oo and Hindi Button Click (Correct Sound)
+        ooBtn.addEventListener("click", function() {
+            document.getElementById("correctSound").play();
+            resetGame();
+        });
+
+        hindiBtn.addEventListener("click", function() {
+            document.getElementById("correctSound").play();
+            resetGame();
+        });
+
+        function resetGame() {
+            document.getElementById("buttonsContainer").style.display = "none";
+            truthIndex = 0;
+            dareIndex = 0;
+            document.getElementById("answerButtons").style.display = "none";
+        }
+    </script>
+</body>
+</html>
