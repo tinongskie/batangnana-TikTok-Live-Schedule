@@ -9,74 +9,121 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
-      color: #333;
+      background-color: #f4f4f9;
+      text-align: center;
     }
     .container {
-      max-width: 800px;
+      max-width: 600px;
       margin: 50px auto;
       padding: 20px;
       background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     h1 {
-      text-align: center;
-      color: #007acc;
+      color: #333;
+    }
+    button {
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
     .question {
+      font-size: 18px;
       margin-bottom: 20px;
     }
-    .choices button {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      background: #007acc;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .choices button:hover {
-      background: #005f99;
-    }
     .score {
-      font-size: 20px;
-      text-align: center;
       margin-top: 20px;
-    }
-    #restart {
-      display: none;
-      padding: 10px 20px;
-      background: #28a745;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #restart:hover {
-      background: #218838;
-    }
-    #background-music {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+      font-size: 20px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Computer Quiz Game</h1>
-    <div id="quiz">
-      <div class="question" id="question">Loading question...</div>
-      <div class="choices" id="choices"></div>
+    <div id="quiz-area">
+      <p class="question" id="question"></p>
+      <button onclick="checkAnswer('A')" id="optionA">Option A</button>
+      <button onclick="checkAnswer('B')" id="optionB">Option B</button>
+      <button onclick="checkAnswer('C')" id="optionC">Option C</button>
+      <button onclick="checkAnswer('D')" id="optionD">Option D</button>
     </div>
-    <div class="score" id="score"></div>
-    <button id="restart">Restart Game</button>
+    <p class="score" id="score">Score: 0</p>
   </div>
 
-  <audio id="correct-sound" src="correct.mp3"></audio>
-  <audio id="incorrect-sound" src="wrong.mp3"></audio><!DOCTYPE html>
+  <audio id="correctSound" src="correct.mp3"></audio>
+  <audio id="wrongSound" src="wrong.mp3"></audio>
+
+  <script>
+    // Questions array
+    const questions = [
+      { 
+        question: "What does CPU stand for?", 
+        options: { A: "Central Processing Unit", B: "Central Programming Unit", C: "Computer Personal Unit", D: "Control Process Unit" },
+        answer: "A" 
+      },
+      {
+        question: "Which one is an operating system?",
+        options: { A: "Chrome", B: "Windows", C: "Intel", D: "USB" },
+        answer: "B"
+      },
+      // Add more questions here, up to 100
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionElement = document.getElementById("question");
+    const optionA = document.getElementById("optionA");
+    const optionB = document.getElementById("optionB");
+    const optionC = document.getElementById("optionC");
+    const optionD = document.getElementById("optionD");
+    const scoreElement = document.getElementById("score");
+
+    const correctSound = document.getElementById("correctSound");
+    const wrongSound = document.getElementById("wrongSound");
+
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      questionElement.textContent = q.question;
+      optionA.textContent = "A. " + q.options.A;
+      optionB.textContent = "B. " + q.options.B;
+      optionC.textContent = "C. " + q.options.C;
+      optionD.textContent = "D. " + q.options.D;
+    }
+
+    function checkAnswer(answer) {
+      const q = questions[currentQuestion];
+      if (answer === q.answer) {
+        correctSound.play();
+        score++;
+      } else {
+        wrongSound.play();
+      }
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        endGame();
+      }
+      scoreElement.textContent = `Score: ${score}`;
+    }
+
+    function endGame() {
+      document.getElementById("quiz-area").innerHTML = `<p>Game Over! Your final score is ${score}.</p>`;
+    }
+
+    // Load the first question
+    loadQuestion();
+  </script>
 </body>
 </html>
