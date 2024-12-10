@@ -57,9 +57,9 @@
   <h1>Guess the Logo Game</h1>
   <div class="image-container">
     <!-- Censored Image -->
-    <img id="censoredImage" src="logo1_censored.png" alt="Censored Logo">
+    <img id="censoredImage" src="level5/censored/aaaaa.png" alt="Censored Logo">
     <!-- Original Image (hidden initially) -->
-    <img id="originalImage" style="display: none;" src="logo1.png" alt="Original Logo">
+    <img id="originalImage" style="display: none;" src="level5/reveal/aaaaa.jpg" alt="Original Logo">
   </div>
 
   <div class="button-container">
@@ -122,6 +122,10 @@
         resultElement.innerText = 'Wrong! Try again. ❌';
         resultElement.style.color = 'red';
       }
+
+      // Disable the input and buttons after submitting guess
+      document.getElementById('guessInput').disabled = true;
+      document.getElementById('submitButton').disabled = true;
     }
 
     function nextImage() {
@@ -135,13 +139,15 @@
       document.getElementById('censoredImage').src = logos[currentLogoIndex].censored;
       document.getElementById('originalImage').src = logos[currentLogoIndex].original;
 
-      // Hide the original image, the result, and Next button, show the See button again
+      // Reset for next round: hide the original image, the result, and Next button, show the See button again
       document.getElementById('originalImage').style.display = 'none';
       document.getElementById('nextButton').style.display = 'none';
       document.getElementById('seeButton').style.display = 'inline-block';
       document.getElementById('guessInput').value = ''; // Clear the guess input
       document.getElementById('submitButton').style.display = 'none'; // Hide submit button
       document.getElementById('result').innerText = ''; // Clear result
+      document.getElementById('guessInput').disabled = false; // Enable input for next guess
+      document.getElementById('submitButton').disabled = false; // Enable submit button
     }
   </script>
 </body>
