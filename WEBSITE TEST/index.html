@@ -50,6 +50,10 @@
         /* Schedule section styling */
         .schedule {
             flex: 2;
+            background-color: #fff;
+            color: #333;
+            border-radius: 10px;
+            padding: 15px;
         }
 
         .schedule h2 {
@@ -129,6 +133,16 @@
             background-color: #666;
         }
 
+        /* Dark mode adjustments */
+        body.dark-mode .schedule {
+            background-color: #444;
+            color: #f9f9f9;
+        }
+
+        body.dark-mode footer {
+            background-color: #222;
+        }
+
         /* Media Query for Mobile Devices */
         @media (max-width: 768px) {
             main {
@@ -174,6 +188,21 @@
                 max-width: 80%; /* Adjust image size on very small screens */
             }
         }
+
+        /* Positioning the dark mode button */
+        #darkModeButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        #toggleButton {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
@@ -184,10 +213,8 @@
     </audio>
 
     <!-- Dark Mode Button -->
-    <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
-        <button id="darkModeButton">Toggle Dark Mode</button>
-        <button id="toggleButton">Stop Music</button>
-    </div>
+    <button id="darkModeButton">Toggle Dark Mode</button>
+    <button id="toggleButton">Stop Music</button>
 
     <script>
         // Set the volume of the background music to a fixed level (e.g., 50%)
