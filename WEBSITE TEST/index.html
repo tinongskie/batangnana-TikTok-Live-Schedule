@@ -3,51 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background Music with Play and Stop Buttons</title>
+    <title>TikTok batangnana live schedule</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #ff0050; /* TikTok's signature pink */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        /* Main content styling */
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap; /* Adjust layout on smaller screens */
+            gap: 20px;
+        }
+
+        /* Schedule section styling */
+        .schedule {
+            flex: 2;
+        }
+
+        .schedule h2 {
+            font-size: 1.8em;
+            color: #ff0050;
+            margin-bottom: 10px;
+        }
+
+        .schedule p, .schedule ul, .schedule li {
+            margin: 10px 0;
+        }
+
+        .schedule ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .schedule li {
+            font-size: 1.1em;
+        }
+
+        /* Image styling */
+        .image-container img {
+            max-width: 90%; /* Ensures the image is responsive */
+            height: auto; /* Maintains aspect ratio */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        footer a {
+            color: #ff0050;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column; /* Stack the elements vertically */
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .schedule {
+                flex: 1;
+            }
+
+            .schedule h2 {
+                font-size: 1.5em;
+            }
+
+            footer {
+                font-size: 0.9em;
+            }
+
+            .image-container img {
+                max-width: 80%; /* Smaller size for very small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .schedule h2 {
+                font-size: 1.2em;
+            }
+
+            .schedule li {
+                font-size: 1em;
+            }
+
+            .image-container img {
+                max-width: 80%; /* Adjust image size on very small screens */
+            }
+        }
+    </style>
+
 </head>
 <body>
-    <h1>Background Music with Play and Stop Buttons</h1>
-
-    <!-- Background music -->
-    <audio id="bgMusic" loop>
+    <!-- Background music with locked volume -->
+    <audio id="bgMusic" loop autoplay muted>
         <source src="BG.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Play and Stop Buttons -->
-    <button id="stopButton">Stop Music</button>
-
-    <!-- Volume control slider -->
-    <label for="volumeControl">Volume Control:</label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.6">
-    <span id="volumeDisplay">60%</span>
+    <!-- Stop Button -->
+    <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
+        <button id="stopButton">Stop Music</button>
+    </div>
 
     <script>
-        const bgMusic = document.getElementById("bgMusic");
-        const stopButton = document.getElementById("stopButton");
-        const volumeControl = document.getElementById("volumeControl");
-        const volumeDisplay = document.getElementById("volumeDisplay");
+        // Set the volume of the background music to a fixed level (e.g., 50%)
+        document.addEventListener("DOMContentLoaded", function () {
+            const bgMusic = document.getElementById("bgMusic");
+            bgMusic.volume = 0.5; // Set volume to 50%
+            bgMusic.muted = false; // Unmute the music after page load
 
-        // Set initial volume
-        bgMusic.volume = 0.6;
-
-        // Play music as soon as possible, even before the page is fully loaded
-        bgMusic.play().catch(function(error) {
-            console.log("Music playback failed:", error);
-        });
-
-        // Stop button functionality
-        stopButton.addEventListener("click", function () {
-            bgMusic.pause();
-            bgMusic.currentTime = 0; // Reset the music to the beginning
-        });
-
-        // Volume control functionality
-        volumeControl.addEventListener("input", function () {
-            const volume = volumeControl.value;
-            bgMusic.volume = volume;
-            volumeDisplay.textContent = Math.round(volume * 100) + "%"; // Update the volume display
+            // Stop button functionality
+            const stopButton = document.getElementById("stopButton");
+            stopButton.addEventListener("click", function () {
+                bgMusic.pause(); // Pause the music
+            });
         });
     </script>
+
+    <!-- Other Content (e.g., Header, Main, etc.) -->
+    <header>
+        <h1>Batangnana TikTok Live Schedule</h1>
+    </header>
+    <main>
+        <!-- Schedule Section -->
+        <div class="schedule">
+            <h2>Upcoming Lives</h2>
+			<h3>RESOURCES DOESN'T LOAD ON TESTING!!</h3>
+            <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
+            <ul>
+                <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
+            </ul>
+            <p>Schedule updated last 11/20/2024 (Wednesday)</p>
+            <p>Make sure to follow me on TikTok for updates and surprises!</p>
+        </div>
+        <!-- Image Section -->
+        <div class="image-container">
+            <img src="batangnana.png" alt="Batangnana Live Stream">
+        </div>
+		
+
+    </main>
+    <center>
+        <p>memes</p>
+        <div class="image-container">
+            <img src="meme1.jpg" alt="Batangnana Live Stream">
+            <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
+        </div>
+	<h3>3D <a href="3dvideos.html" target="_blank">VIDEOS</a></h3>
+	<h3>Best of 2024 <a href="BestOf2024.html" target="_blank"> 2024VIDEOS</a></h3>
+        <h3>wanna play games? <a href="games.html" target="_blank">click here</a></h3>
+    </center>
+    <footer>
+        <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_blank">TikTok</a></p>
+        <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_blank">Facebook</a></p>
+        <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1" target="_blank">TikTok</a></p>
+	    <p>Website updated on January 08 2025</p>
+    </footer>
 </body>
 </html>
