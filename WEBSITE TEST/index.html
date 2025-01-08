@@ -4,30 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok batangnana live schedule</title>
+    <link rel="stylesheet" href="styles-light.css"> <!-- Light Mode CSS -->
     <style>
-        /* Same CSS as before */
+        /* Light Mode Inline Styles */
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            text-align: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .schedule {
+            padding: 20px;
+        }
+        .schedule ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .schedule li {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #0077b6;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Background music with loop -->
     <audio id="bgMusic" loop muted>
         <source src="BG.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Dark Mode and Play/Stop Buttons -->
-    <button id="darkModeButton">Toggle Dark Mode</button>
+    <!-- Play/Stop Buttons -->
     <button id="toggleButton">Stop Music</button>
+    <button id="modeToggleButton">Switch to Dark Mode</button> <!-- Button to Switch Mode -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const bgMusic = document.getElementById("bgMusic");
             const toggleButton = document.getElementById("toggleButton");
+            const modeToggleButton = document.getElementById("modeToggleButton");
 
-            // Set initial volume
             bgMusic.volume = 0.5;
 
-            // Check if the music state (play/pause) is saved in localStorage
             if (localStorage.getItem("bgMusicState") === "playing") {
                 bgMusic.play();
                 toggleButton.textContent = "Stop Music";
@@ -36,45 +67,21 @@
                 toggleButton.textContent = "Play Music";
             }
 
-            // Toggle Dark Mode
-            const darkModeButton = document.getElementById("darkModeButton");
-            darkModeButton.addEventListener("click", function () {
-                document.body.classList.toggle("dark-mode");
-            });
-
-            // Toggle play/pause music functionality
             toggleButton.addEventListener("click", function () {
                 if (bgMusic.paused) {
                     bgMusic.play();
                     toggleButton.textContent = "Stop Music";
-                    localStorage.setItem("bgMusicState", "playing");  // Save the music state
+                    localStorage.setItem("bgMusicState", "playing");
                 } else {
                     bgMusic.pause();
                     toggleButton.textContent = "Play Music";
-                    localStorage.setItem("bgMusicState", "paused");  // Save the music state
+                    localStorage.setItem("bgMusicState", "paused");
                 }
             });
 
-            // Stop background music and prevent hyperlink from opening in a new tab
-            const links = document.querySelectorAll("a");
-            links.forEach(link => {
-                link.addEventListener("click", function (e) {
-                    // Stop background music when clicking any link
-                    bgMusic.pause();
-                    localStorage.setItem("bgMusicState", "paused");  // Save the music state as paused
-                    
-                    // Prevent the default action (opening in a new tab) and navigate in the same tab
-                    e.preventDefault();
-
-                    // Redirect to the link in the same tab
-                    window.location.href = this.href;
-                });
-            });
-
-            // Stop background music when navigating away (on link click)
-            window.addEventListener("beforeunload", function () {
-                bgMusic.pause();
-                localStorage.setItem("bgMusicState", "paused");  // Save the music state as paused
+            modeToggleButton.addEventListener("click", function () {
+                // Switch to Dark Mode
+                window.location.href = "dark_mode.html"; // Redirect to dark_mode.html
             });
         });
     </script>
@@ -84,7 +91,6 @@
     </header>
 
     <main>
-        <!-- Schedule Section -->
         <div class="schedule">
             <h2>Upcoming Lives</h2>
             <ul>
