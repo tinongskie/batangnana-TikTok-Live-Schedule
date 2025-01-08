@@ -55,6 +55,22 @@
                 }
             });
 
+            // Stop background music and prevent hyperlink from opening in a new tab
+            const links = document.querySelectorAll("a");
+            links.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    // Stop background music when clicking any link
+                    bgMusic.pause();
+                    localStorage.setItem("bgMusicState", "paused");  // Save the music state as paused
+                    
+                    // Prevent the default action (opening in a new tab) and navigate in the same tab
+                    e.preventDefault();
+
+                    // Redirect to the link in the same tab
+                    window.location.href = this.href;
+                });
+            });
+
             // Stop background music when navigating away (on link click)
             window.addEventListener("beforeunload", function () {
                 bgMusic.pause();
@@ -87,9 +103,9 @@
     </main>
 
     <footer>
-        <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_blank">TikTok</a></p>
-        <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_blank">Facebook</a></p>
-        <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1" target="_blank">TikTok</a></p>
+        <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana">TikTok</a></p>
+        <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301">Facebook</a></p>
+        <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1">TikTok</a></p>
         <p>Website updated on January 08 2025</p>
     </footer>
 </body>
