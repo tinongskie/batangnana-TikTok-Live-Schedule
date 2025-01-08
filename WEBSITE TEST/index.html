@@ -57,7 +57,7 @@
 </head>
 <body>
     <!-- Background music with loop -->
-    <audio id="bgMusic" loop muted>
+    <audio id="bgMusic" loop>
         <source src="BG.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -74,14 +74,16 @@
             // Set initial volume
             bgMusic.volume = 0.5;
 
-            // Check if the music state (play/pause) is saved in localStorage
-            if (localStorage.getItem("bgMusicState") === "playing") {
-                bgMusic.play();
-                toggleButton.textContent = "Stop Music";
-            } else {
-                bgMusic.pause();
-                toggleButton.textContent = "Play Music";
-            }
+            // Play music automatically with a slight delay to bypass autoplay block in some browsers
+            setTimeout(() => {
+                if (localStorage.getItem("bgMusicState") === "playing") {
+                    bgMusic.play();
+                    toggleButton.textContent = "Stop Music";
+                } else {
+                    bgMusic.pause();
+                    toggleButton.textContent = "Play Music";
+                }
+            }, 500);
 
             // Toggle Dark Mode
             const darkModeButton = document.getElementById("darkModeButton");
