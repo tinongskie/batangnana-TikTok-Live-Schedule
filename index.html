@@ -139,6 +139,39 @@
 
 </head>
 <body>
+    <!-- Background music with locked volume -->
+    <audio id="bgMusic" loop autoplay muted>
+        <source src="WEBSITE TEST/BG.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Stop/Play Button -->
+    <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
+        <button id="toggleButton">Stop Music</button>
+    </div>
+
+    <script>
+        // Set the volume of the background music to a fixed level (e.g., 50%)
+        document.addEventListener("DOMContentLoaded", function () {
+            const bgMusic = document.getElementById("bgMusic");
+            bgMusic.volume = 0.5; // Set volume to 50%
+            bgMusic.muted = false; // Unmute the music after page load
+
+            // Toggle button functionality
+            const toggleButton = document.getElementById("toggleButton");
+            toggleButton.addEventListener("click", function () {
+                if (bgMusic.paused) {
+                    bgMusic.play(); // Play the music if it is paused
+                    toggleButton.textContent = "Stop Music"; // Change button text to 'Stop Music'
+                } else {
+                    bgMusic.pause(); // Pause the music if it is playing
+                    toggleButton.textContent = "Play Music"; // Change button text to 'Play Music'
+                }
+            });
+        });
+    </script>
+
+    <!-- Other Content (e.g., Header, Main, etc.) -->
     <header>
         <h1>Batangnana TikTok Live Schedule</h1>
     </header>
@@ -146,6 +179,7 @@
         <!-- Schedule Section -->
         <div class="schedule">
             <h2>Upcoming Lives</h2>
+            <h3>RESOURCES DOESN'T LOAD ON TESTING!!</h3>
             <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
             <ul>
                 <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
@@ -162,8 +196,6 @@
         <div class="image-container">
             <img src="batangnana.png" alt="Batangnana Live Stream">
         </div>
-		
-
     </main>
     <center>
         <p>memes</p>
@@ -171,16 +203,15 @@
             <img src="meme1.jpg" alt="Batangnana Live Stream">
             <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
         </div>
-	<h3>3D <a href="3dvideos.html" target="_blank">VIDEOS</a></h3>
-	<h3>Best of 2024 <a href="BestOf2024.html" target="_blank"> 2024VIDEOS</a></h3>
+        <h3>3D <a href="3dvideos.html" target="_blank">VIDEOS</a></h3>
+        <h3>Best of 2024 <a href="BestOf2024.html" target="_blank"> 2024VIDEOS</a></h3>
         <h3>wanna play games? <a href="games.html" target="_blank">click here</a></h3>
-	<p>website test <a href="WEBSITE TEST/index.html" target=_blank">click here</a></p>
     </center>
     <footer>
         <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_blank">TikTok</a></p>
         <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_blank">Facebook</a></p>
         <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1" target="_blank">TikTok</a></p>
-	    <p>Website updated on January 08 2025</p>
+        <p>Website updated on January 08 2025</p>
     </footer>
 </body>
 </html>
