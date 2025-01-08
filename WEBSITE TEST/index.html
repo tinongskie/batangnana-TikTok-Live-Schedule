@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Music with Play and Stop Buttons</title>
+</head>
+<body>
+    <h1>Background Music with Play and Stop Buttons</h1>
+
+    <!-- Background music -->
+    <audio id="bgMusic" loop>
+        <source src="BG.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Play and Stop Buttons -->
+    <button id="stopButton">Stop Music</button>
+
+    <!-- Volume control slider -->
+    <label for="volumeControl">Volume Control:</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.6">
+    <span id="volumeDisplay">60%</span>
+
+    <script>
+        const bgMusic = document.getElementById("bgMusic");
+        const stopButton = document.getElementById("stopButton");
+        const volumeControl = document.getElementById("volumeControl");
+        const volumeDisplay = document.getElementById("volumeDisplay");
+
+        // Set initial volume
+        bgMusic.volume = 0.6;
+
+        // Play music as soon as possible, even before the page is fully loaded
+        bgMusic.play().catch(function(error) {
+            console.log("Music playback failed:", error);
+        });
+
+        // Stop button functionality
+        stopButton.addEventListener("click", function () {
+            bgMusic.pause();
+            bgMusic.currentTime = 0; // Reset the music to the beginning
+        });
+
+        // Volume control functionality
+        volumeControl.addEventListener("input", function () {
+            const volume = volumeControl.value;
+            bgMusic.volume = volume;
+            volumeDisplay.textContent = Math.round(volume * 100) + "%"; // Update the volume display
+        });
+    </script>
+</body>
+</html>
