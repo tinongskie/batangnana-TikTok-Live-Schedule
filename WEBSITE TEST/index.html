@@ -145,9 +145,9 @@
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Stop Button -->
+    <!-- Stop/Play Button -->
     <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
-        <button id="stopButton">Stop Music</button>
+        <button id="toggleButton">Stop Music</button>
     </div>
 
     <script>
@@ -157,10 +157,16 @@
             bgMusic.volume = 0.5; // Set volume to 50%
             bgMusic.muted = false; // Unmute the music after page load
 
-            // Stop button functionality
-            const stopButton = document.getElementById("stopButton");
-            stopButton.addEventListener("click", function () {
-                bgMusic.pause(); // Pause the music
+            // Toggle button functionality
+            const toggleButton = document.getElementById("toggleButton");
+            toggleButton.addEventListener("click", function () {
+                if (bgMusic.paused) {
+                    bgMusic.play(); // Play the music if it is paused
+                    toggleButton.textContent = "Stop Music"; // Change button text to 'Stop Music'
+                } else {
+                    bgMusic.pause(); // Pause the music if it is playing
+                    toggleButton.textContent = "Play Music"; // Change button text to 'Play Music'
+                }
             });
         });
     </script>
@@ -198,7 +204,7 @@
             <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
         </div>
         <h3>3D <a href="3dvideos.html" target="_blank">VIDEOS</a></h3>
-        <h3>Best of 2024 <a href="BestOf2024.html" target="_blank">2024VIDEOS</a></h3>
+        <h3>Best of 2024 <a href="BestOf2024.html" target="_blank"> 2024VIDEOS</a></h3>
         <h3>wanna play games? <a href="games.html" target="_blank">click here</a></h3>
     </center>
     <footer>
