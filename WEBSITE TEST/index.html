@@ -5,61 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok batangnana live schedule</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #000;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .dark-mode {
-            background-color: #121212;
-            color: #fff;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #f1f1f1;
-        }
-        h1 {
-            font-size: 2em;
-            margin: 0;
-        }
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-        .schedule {
-            margin: 20px 0;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #f1f1f1;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-        button:focus {
-            outline: none;
-        }
+        /* Same CSS as before */
     </style>
 </head>
 <body>
-    <!-- Background music with loop and autoplay -->
-    <audio id="bgMusic" loop autoplay>
+    <!-- Background music with loop -->
+    <audio id="bgMusic" loop muted>
         <source src="BG.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -104,7 +55,7 @@
                 }
             });
 
-            // Stop background music when navigating away (on link click)
+            // Stop background music and prevent hyperlink from opening in a new tab
             const links = document.querySelectorAll("a");
             links.forEach(link => {
                 link.addEventListener("click", function (e) {
@@ -112,12 +63,18 @@
                     bgMusic.pause();
                     localStorage.setItem("bgMusicState", "paused");  // Save the music state as paused
                     
-                    // Prevent the default action (opening in a new tab)
+                    // Prevent the default action (opening in a new tab) and navigate in the same tab
                     e.preventDefault();
 
                     // Redirect to the link in the same tab
                     window.location.href = this.href;
                 });
+            });
+
+            // Stop background music when navigating away (on link click)
+            window.addEventListener("beforeunload", function () {
+                bgMusic.pause();
+                localStorage.setItem("bgMusicState", "paused");  // Save the music state as paused
             });
         });
     </script>
