@@ -5,61 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok batangnana live schedule</title>
     <style>
-        /* Default Styles */
+        /* Light Mode Styles */
         body {
+            background-color: #fff;
+            color: #000;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        header, footer {
-            background-color: #333;
-            color: white;
+        header {
+            background-color: #f4f4f4;
             padding: 10px;
             text-align: center;
         }
 
-        footer p {
-            margin: 5px;
+        footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
         }
 
-        h1, h2 {
-            color: #333;
+        a {
+            color: #007bff;
+            text-decoration: none;
         }
 
         .schedule {
-            margin: 20px;
-            text-align: center;
-        }
-
-        .image-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        button:focus {
-            outline: none;
+            padding: 20px;
         }
 
         /* Dark Mode Styles */
@@ -68,13 +39,19 @@
             color: #e0e0e0;
         }
 
-        /* Link Styling */
-        a {
-            color: #4CAF50;
+        body.dark-mode header, body.dark-mode footer {
+            background-color: #1f1f1f;
         }
 
-        a:hover {
-            text-decoration: underline;
+        body.dark-mode a {
+            color: #1e90ff;
+        }
+
+        /* Buttons */
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
         }
     </style>
 </head>
