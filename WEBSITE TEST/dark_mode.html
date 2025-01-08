@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok batangnana live schedule - Dark Mode</title>
+    <style>
+        /* Dark Mode Inline Styles */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            text-align: center;
+            background-color: #333333;
+            padding: 10px;
+        }
+        h1 {
+            color: #e0e0e0;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #555;
+            color: white;
+            border: none;
+        }
+        .schedule {
+            padding: 20px;
+        }
+        .schedule ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .schedule li {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #66ccff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop muted>
+        <source src="BG.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Play/Stop Buttons -->
+    <button id="toggleButton">Stop Music</button>
+    <button id="modeToggleButton">Switch to Light Mode</button> <!-- Button to Switch Mode -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bgMusic = document.getElementById("bgMusic");
+            const toggleButton = document.getElementById("toggleButton");
+            const modeToggleButton = document.getElementById("modeToggleButton");
+
+            bgMusic.volume = 0.5;
+
+            if (localStorage.getItem("bgMusicState") === "playing") {
+                bgMusic.play();
+                toggleButton.textContent = "Stop Music";
+            } else {
+                bgMusic.pause();
+                toggleButton.textContent = "Play Music";
+            }
+
+            toggleButton.addEventListener("click", function () {
+                if (bgMusic.paused) {
+                    bgMusic.play();
+                    toggleButton.textContent = "Stop Music";
+                    localStorage.setItem("bgMusicState", "playing");
+                } else {
+                    bgMusic.pause();
+                    toggleButton.textContent = "Play Music";
+                    localStorage.setItem("bgMusicState", "paused");
+                }
+            });
+
+            modeToggleButton.addEventListener("click", function () {
+                // Switch to Light Mode
+                window.location.href = "index.html"; // Redirect to index.html
+            });
+        });
+    </script>
+
+    <header>
+        <h1>Batangnana TikTok Live Schedule - Dark Mode</h1>
+    </header>
+
+    <main>
+        <div class="schedule">
+            <h2>Upcoming Lives</h2>
+            <ul>
+                <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
+                <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
+            </ul>
+        </div>
+
+        <div class="image-container">
+            <img src="batangnana.png" alt="Batangnana Live Stream">
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana">TikTok</a></p>
+        <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301">Facebook</a></p>
+        <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1">TikTok</a></p>
+        <p>Website updated on January 08 2025</p>
+    </footer>
+</body>
+</html>
