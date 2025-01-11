@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best of 2024 Videos</title>
+    <title>3D VIDEOS</title>
     <style>
         /* General body styling */
         body {
@@ -105,69 +105,93 @@
     </header>
 
     <main>
-	<center>
-        <!-- Video Section -->
-        <section class="video-container">
-<div>
-		<h2>3D VIDEOS</h2>
-    <h3>chicken dance ni nana</h3>
-    <video controls>
-        <source src="3d videos/chicken dance ni nana 2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+        <center>
+            <!-- Video Section -->
+            <section class="video-container">
+                <div>
+                    <h2>3D VIDEOS</h2>
+                    <h3>chicken dance ni nana</h3>
+                    <video controls>
+                        <source src="3d videos/chicken dance ni nana 2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
 
-<div>
-    <h3>sumali na sila</h3>
-    <video controls>
-        <source src="3d videos/sumali na sila hahahahah.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+                <div>
+                    <h3>sumali na sila</h3>
+                    <video controls>
+                        <source src="3d videos/sumali na sila hahahahah.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
 
-<div>
-    <h3>kili kili</h3>
-    <video controls>
-        <source src="3d videos/kili kili.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-		
-<div>
-    <h3>diwow ni zilong</h3>
-    <video controls>
-        <source src="3d videos/anyari sa zilong.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-		
-<div>
-    <h3>sana ok lang kayo</h3>
-    <video controls>
-        <source src="3d videos/sana ok lang kayo.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-		
-<div>
-    <h3>Run bunana</h3>
-    <video controls>
-        <source src="3d videos/Run bunana.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-        </section>
-		<h3>More 3d videos will be uploaded soon!</h3>
+                <div>
+                    <h3>kili kili</h3>
+                    <video controls>
+                        <source src="3d videos/kili kili.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
 
-        <!-- Back to Main Page -->
-        <section class="back-link">
-            <p>Back to <a href="index.html">Live Schedule</a></p>
-        </section>
-		</center>
+                <div>
+                    <h3>diwow ni zilong</h3>
+                    <video controls>
+                        <source src="3d videos/anyari sa zilong.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div>
+                    <h3>sana ok lang kayo</h3>
+                    <video controls>
+                        <source src="3d videos/sana ok lang kayo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div>
+                    <h3>Run bunana</h3>
+                    <video controls>
+                        <source src="3d videos/Run bunana.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+
+            <h3>More 3D videos will be uploaded soon!</h3>
+
+            <!-- Back to Main Page -->
+            <section class="back-link">
+                <p>Back to <a href="index.html">Live Schedule</a></p>
+            </section>
+        </center>
     </main>
 
     <footer>
         <p>Follow us on <a href="#">TikTok</a></p>
     </footer>
+
+    <script>
+        // Get all video elements
+        const videos = document.querySelectorAll('video');
+
+        // Function to scroll to the next video when one finishes
+        function scrollToNextVideo(currentVideo) {
+            let nextVideo = currentVideo.nextElementSibling;
+
+            // If the current video is the last, do nothing
+            if (!nextVideo) return;
+
+            // Scroll the next video into view
+            nextVideo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Add event listener to each video
+        videos.forEach((video) => {
+            video.addEventListener('ended', function () {
+                scrollToNextVideo(video);
+            });
+        });
+    </script>
 </body>
 </html>
