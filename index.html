@@ -149,49 +149,99 @@
     </style>
 </head>
 <body>
-    <!-- Background music with locked volume -->
+<!-- First Background music (default) -->
 <audio id="bgMusic" loop autoplay>
     <source src="WEBSITE TEST/BG.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
-    <!-- Stop/Play Button -->
-    <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
-        <button id="toggleButton">Stop Music</button>
-    </div>
+<!-- Second Background music -->
+<audio id="secondBgMusic" loop autoplay>
+    <source src="WEBSITE TEST/bgmusic2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
 
-    <!-- Volume Control -->
-    <div class="volume-control">
-        <label for="volumeSlider">Adjust Volume:</label>
-        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
-    </div>
+<!-- Stop/Play Button -->
+<div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
+    <button id="toggleButton">Stop Music</button>
+</div>
 
-    <script>
-        // Set the volume of the background music to a fixed level (e.g., 50%)
-        document.addEventListener("DOMContentLoaded", function () {
-            const bgMusic = document.getElementById("bgMusic");
-            bgMusic.volume = 0.5; // Set volume to 50%
-            bgMusic.muted = false; // Unmute the music after page load
+<!-- Volume Control -->
+<div class="volume-control" style="text-align: center; margin-top: 20px;">
+    <label for="volumeSlider">Adjust Volume:</label>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+</div>
 
-            // Toggle button functionality
-            const toggleButton = document.getElementById("toggleButton");
-            toggleButton.addEventListener("click", function () {
-                if (bgMusic.paused) {
-                    bgMusic.play(); // Play the music if it is paused
-                    toggleButton.textContent = "Stop Music"; // Change button text to 'Stop Music'
-                } else {
-                    bgMusic.pause(); // Pause the music if it is playing
-                    toggleButton.textContent = "Play Music"; // Change button text to 'Play Music'
-                }
-            });
+<!-- Music Selector -->
+<div style="text-align: center; margin-top: 20px;">
+    <label for="musicSelector">Choose Background Music:</label>
+    <input type="file" id="musicSelector" accept="audio/*">
+</div>
 
-            // Volume control functionality
-            const volumeSlider = document.getElementById("volumeSlider");
-            volumeSlider.addEventListener("input", function () {
-                bgMusic.volume = volumeSlider.value; // Update volume based on slider value
-            });
+<!-- Toggle Background Music -->
+<div style="text-align: center; margin-top: 20px;">
+    <label for="bgMusicSelector">Select Background Music:</label>
+    <select id="bgMusicSelector">
+        <option value="bgMusic">Default BG Music</option>
+        <option value="secondBgMusic">Second BG Music</option>
+    </select>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const bgMusic = document.getElementById("bgMusic");
+        const secondBgMusic = document.getElementById("secondBgMusic");
+        const toggleButton = document.getElementById("toggleButton");
+        const volumeSlider = document.getElementById("volumeSlider");
+        const musicSelector = document.getElementById("musicSelector");
+        const bgMusicSelector = document.getElementById("bgMusicSelector");
+
+        // Set initial volume
+        bgMusic.volume = 0.5;
+        secondBgMusic.volume = 0.5;
+
+        // Toggle play/pause
+        toggleButton.addEventListener("click", function () {
+            if (bgMusic.paused && secondBgMusic.paused) {
+                bgMusic.play();
+                toggleButton.textContent = "Stop Music";
+            } else {
+                bgMusic.pause();
+                secondBgMusic.pause();
+                toggleButton.textContent = "Play Music";
+            }
         });
-    </script>
+
+        // Adjust volume
+        volumeSlider.addEventListener("input", function () {
+            bgMusic.volume = volumeSlider.value;
+            secondBgMusic.volume = volumeSlider.value;
+        });
+
+        // Change background music
+        musicSelector.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                bgMusic.src = fileURL; // Update the audio source for bgMusic
+                bgMusic.play(); // Play the newly selected track
+                toggleButton.textContent = "Stop Music"; // Update button text
+            }
+        });
+
+        // Switch between background music tracks
+        bgMusicSelector.addEventListener("change", function () {
+            if (bgMusicSelector.value === "bgMusic") {
+                secondBgMusic.pause(); // Stop the second music
+                bgMusic.play(); // Play the default music
+            } else {
+                bgMusic.pause(); // Stop the default music
+                secondBgMusic.play(); // Play the second music
+            }
+        });
+    });
+</script>
+
 
     <!-- Other Content (e.g., Header, Main, etc.) -->
     <header>
