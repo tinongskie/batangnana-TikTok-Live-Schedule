@@ -64,14 +64,6 @@
             font-size: 1.1em;
         }
 
-        /* Image styling */
-        .image-container img {
-            max-width: 90%; /* Ensures the image is responsive */
-            height: auto; /* Maintains aspect ratio */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
         /* Footer styling */
         footer {
             text-align: center;
@@ -123,10 +115,6 @@
             footer {
                 font-size: 0.9em;
             }
-
-            .image-container img {
-                max-width: 80%; /* Smaller size for very small screens */
-            }
         }
 
         @media (max-width: 480px) {
@@ -141,15 +129,11 @@
             .schedule li {
                 font-size: 1em;
             }
-
-            .image-container img {
-                max-width: 80%; /* Adjust image size on very small screens */
-            }
         }
     </style>
 </head>
 <body>
-<!-- First Background music (default) -->
+<!-- Background music -->
 <audio id="bgMusic" loop autoplay>
     <source src="WEBSITE TEST/BG.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -240,8 +224,31 @@
             }
         });
     });
-</script>
 
+    // Set the last update timestamp
+    const lastUpdated = new Date('2025-01-09T00:00:00'); // Replace with your last updated date and time
+
+    // Function to calculate the time difference
+    function calculateTimePassed(lastUpdated) {
+        const now = new Date();
+        const diffInMilliseconds = now - lastUpdated;
+        const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+        const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+        let timePassedText = `${diffInHours} hours ago`;
+        if (diffInDays >= 1) {
+            timePassedText = `${diffInDays} day(s) ago`;
+        }
+
+        return timePassedText;
+    }
+
+    // Display the last updated date and time passed
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleString();
+        document.getElementById('timePassed').textContent = calculateTimePassed(lastUpdated);
+    });
+</script>
 
     <!-- Other Content (e.g., Header, Main, etc.) -->
     <header>
@@ -276,7 +283,7 @@
             <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
         </div>
         <h3>3D <a href="3dvideos.html" target="_self">VIDEOS</a></h3>
-        <h3>Best of 2024 <a href="BestOf2024.html" target="_self"> 2024VIDEOS</a></h3>
+        <h3>Best of 2024 <a href="BestOf2024.html" target="_self">2024VIDEOS</a></h3>
         <h3>wanna play games? <a href="games.html" target="_self">click here</a></h3>
         <h3>join to my discord server <a href="https://discord.gg/xGN86DXNVQ" target="_self">here!</a></h3>
         <a href="index(old).html" target="_self">Go to Original version</a>
@@ -285,7 +292,7 @@
         <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
         <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_self">Facebook</a></p>
         <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1" target="_self">TikTok</a></p>
-        <p>Website updated on January 09 2025</p>
+        <p>Website updated on <span id="lastUpdated"></span> (<span id="timePassed"></span>)</p>
     </footer>
 </body>
 </html>
