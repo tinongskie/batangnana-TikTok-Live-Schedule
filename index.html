@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok batangnana live schedule</title>
     <style>
-        /* General body styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,9 +13,8 @@
             color: #333;
         }
 
-        /* Header styling */
         header {
-            background-color: #ff0050; /* TikTok's signature pink */
+            background-color: #ff0050;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -27,7 +25,6 @@
             margin: 0;
         }
 
-        /* Main content styling */
         main {
             max-width: 800px;
             margin: 20px auto;
@@ -36,11 +33,10 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-wrap: wrap; /* Adjust layout on smaller screens */
+            flex-wrap: wrap;
             gap: 20px;
         }
 
-        /* Schedule section styling */
         .schedule {
             flex: 2;
         }
@@ -64,7 +60,15 @@
             font-size: 1.1em;
         }
 
-        /* Footer styling */
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
         footer {
             text-align: center;
             padding: 10px 0;
@@ -82,7 +86,6 @@
             text-decoration: underline;
         }
 
-        /* Volume control styling */
         .volume-control {
             margin-top: 20px;
             text-align: center;
@@ -93,10 +96,9 @@
             max-width: 300px;
         }
 
-        /* Media Query for Mobile Devices */
         @media (max-width: 768px) {
             main {
-                flex-direction: column; /* Stack the elements vertically */
+                flex-direction: column;
                 text-align: center;
             }
 
@@ -129,40 +131,39 @@
             .schedule li {
                 font-size: 1em;
             }
+
+            .image-container img {
+                max-width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
-<!-- Background music -->
 <audio id="bgMusic" loop autoplay>
     <source src="WEBSITE TEST/BG.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
-<!-- Second Background music -->
 <audio id="secondBgMusic" loop autoplay>
     <source src="WEBSITE TEST/bgmusic2.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
-<!-- Stop/Play Button -->
 <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
     <button id="toggleButton">Stop Music</button>
 </div>
 
-<!-- Volume Control -->
 <div class="volume-control" style="text-align: center; margin-top: 20px;">
     <label for="volumeSlider">Adjust Volume:</label>
     <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
 </div>
 
-<!-- Music Selector -->
 <div style="text-align: center; margin-top: 20px;">
     <label for="musicSelector">Choose Background Music:</label>
     <input type="file" id="musicSelector" accept="audio/*">
 </div>
 
-<!-- Toggle Background Music -->
 <div style="text-align: center; margin-top: 20px;">
     <label for="bgMusicSelector">Select Background Music:</label>
     <select id="bgMusicSelector">
@@ -180,11 +181,9 @@
         const musicSelector = document.getElementById("musicSelector");
         const bgMusicSelector = document.getElementById("bgMusicSelector");
 
-        // Set initial volume
         bgMusic.volume = 0.5;
         secondBgMusic.volume = 0.5;
 
-        // Toggle play/pause
         toggleButton.addEventListener("click", function () {
             if (bgMusic.paused && secondBgMusic.paused) {
                 bgMusic.play();
@@ -196,39 +195,34 @@
             }
         });
 
-        // Adjust volume
         volumeSlider.addEventListener("input", function () {
             bgMusic.volume = volumeSlider.value;
             secondBgMusic.volume = volumeSlider.value;
         });
 
-        // Change background music
         musicSelector.addEventListener("change", function (event) {
             const file = event.target.files[0];
             if (file) {
                 const fileURL = URL.createObjectURL(file);
-                bgMusic.src = fileURL; // Update the audio source for bgMusic
-                bgMusic.play(); // Play the newly selected track
-                toggleButton.textContent = "Stop Music"; // Update button text
+                bgMusic.src = fileURL;
+                bgMusic.play();
+                toggleButton.textContent = "Stop Music";
             }
         });
 
-        // Switch between background music tracks
         bgMusicSelector.addEventListener("change", function () {
             if (bgMusicSelector.value === "bgMusic") {
-                secondBgMusic.pause(); // Stop the second music
-                bgMusic.play(); // Play the default music
+                secondBgMusic.pause();
+                bgMusic.play();
             } else {
-                bgMusic.pause(); // Stop the default music
-                secondBgMusic.play(); // Play the second music
+                bgMusic.pause();
+                secondBgMusic.play();
             }
         });
     });
 
-    // Set the last update timestamp
-    const lastUpdated = new Date('2025-01-13T00:41:00'); // Replace with your last updated date and time
+    const lastUpdated = new Date('2025-01-13T00:41:00');
 
-    // Function to calculate the time difference
     function calculateTimePassed(lastUpdated) {
         const now = new Date();
         const diffInMilliseconds = now - lastUpdated;
@@ -243,71 +237,62 @@
         return timePassedText;
     }
 
-    // Display the last updated date and time passed
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleString();
         document.getElementById('timePassed').textContent = calculateTimePassed(lastUpdated);
     });
 </script>
 
-    <!-- Other Content (e.g., Header, Main, etc.) -->
-    <header>
-        <h1>Batangnana TikTok Live Schedule</h1>
-    </header>
-    <main>
-        <!-- Schedule Section -->
-        <div class="schedule">
-            <h2>Upcoming Lives</h2>
-            <h3>THIS PAGE IS BETA VERSION</h3>
-            <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
-            <ul>
-                <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
-                <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
-                <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
-                <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
-                <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
-                <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
-            </ul>
-            <p>Schedule updated last 11/20/2024 (Wednesday)</p>
-            <p>Make sure to follow me on TikTok for updates and surprises!</p>
-        </div>
-        <!-- Image Section -->
-        <div class="image-container">
-            <img src="batangnana.png" alt="Batangnana Live Stream">
-        </div>
-    </main>
-    <center>
-        <p>memes</p>
-        <div class="image-container">
-            <img src="meme1.jpg" alt="Batangnana Live Stream">
-            <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
-        </div>
-        <p>pose ni nana</p>
-        <div class="image-container">
-            <img src="pose1.jpg" alt="pose ni nana">
-        </div>
+<header>
+    <h1>Batangnana TikTok Live Schedule</h1>
+</header>
+<main>
+    <div class="schedule">
+        <h2>Upcoming Lives</h2>
+        <h3>THIS PAGE IS BETA VERSION</h3>
+        <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
+        <ul>
+            <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
+            <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
+            <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
+            <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
+            <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
+            <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
+        </ul>
+        <p>Schedule updated last 11/20/2024 (Wednesday)</p>
+        <p>Make sure to follow me on TikTok for updates and surprises!</p>
+    </div>
+    <div class="image-container">
+        <img src="batangnana.png" alt="Batangnana Live Stream">
+    </div>
+</main>
+<center>
+    <p>memes</p>
+    <div class="image-container">
+        <img src="meme1.jpg" alt="Batangnana Live Stream">
+        <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
+    </div>
+    <p>pose ni nana</p>
+    <div class="image-container">
+        <img src="pose1.jpg" alt="pose ni nana">
+    </div>
     <a href="pose1.jpg" download="pose1.jpg">Download</a>
-        <div class="image-container">
-            <img src="awra ni bunanak.jpg" alt="pose ni nana">
-        </div>
-            <a href="awra ni bunanak.jpg" download="awra ni bunanak.jpg">Download</a>
-        <div class="image-container">
-            <img src="HAHAHAHAHA cute.jpg" alt="pose ni nana">
-        </div>
-        <a href="HAHAHAHAHA cute.jpg" download="HAHAHAHAHA cute.jpg">Download</a>
-        
-        
+    <div class="image-container">
+        <img src="awra ni bunanak.jpg" alt="pose ni nana">
+    </div>
+    <a href="awra ni bunanak.jpg" download="awra ni bunanak.jpg">Download</a>
+    <div class="image-container">
+        <img src="HAHAHAHAHA cute.jpg" alt="pose ni nana">
+    </div>
+    <a href="HAHAHAHAHA cute.jpg" download="HAHAHAHAHA cute.jpg">Download</a>
 
-        <h3>3D <a href="3dvideos.html" target="_self">VIDEOS</a></h3>
-        <h3>Best of 2024 <a href="BestOf2024.html" target="_self">2024VIDEOS</a></h3>
-        <h3>wanna play games? <a href="games.html" target="_self">click here</a></h3>
-        <h3>join to my discord server <a href="https://discord.gg/xGN86DXNVQ" target="_self">here!</a></h3>
-        <a href="index(old).html" target="_self">Go to Original version</a>
-    </center>
-    <footer>
+    <h3>3D <a href="3dvideos.html" target="_self">VIDEOS</a></h3>
+    <h3>Best of 2024 <a href="BestOf2024.html" target="_self">2024VIDEOS</a></h3>
+</center>
+        <footer>
         <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
         <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_self">Facebook</a></p>
-        <p>Follow Fia on  <a href="unavailable.html" target="_self">TikTok</a></p>
+        <p>Follow Fia on  <a href="https://www.tiktok.com/@fia6697?_t=ZS-8spavbySGPw&_r=1" target="_self">TikTok</a></p>
         <p>Website updated on <span id="lastUpdated"></span> (<span id="timePassed"></span>)</p>
     </footer>
 </body>
