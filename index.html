@@ -136,6 +136,22 @@
                 max-width: 100%;
                 height: auto;
             }
+                    margin: 0;
+            height: 200vh; /* Extend page height to enable scrolling */
+            font-family: Arial, sans-serif;
+        }
+
+        #image-container {
+            position: fixed; /* Keeps the image fixed relative to the viewport */
+            top: 75%; /* Start the image lower on the viewport */
+            right: 0; /* Position the image on the right side */
+            transform: translateY(-50%); /* Adjust for vertical centering */
+            transition: opacity 0.3s ease;
+        }
+
+        #image-container img {
+            width: 200px; /* Adjust the image size */
+            height: auto;
         }
     </style>
 </head>
@@ -172,7 +188,20 @@
     </select>
 </div>
 
+    <div id="image-container">
+        <img src="background/background.png" alt="Background">
+    </div>
+
 <script>
+        const imageContainer = document.getElementById('image-container');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY; // Get the vertical scroll position
+
+            // Adjust the image position based on scroll
+            imageContainer.style.transform = `translateY(calc(-50% + ${scrollY}px))`;
+        });
+		
     document.addEventListener("DOMContentLoaded", function () {
         const bgMusic = document.getElementById("bgMusic");
         const secondBgMusic = document.getElementById("secondBgMusic");
@@ -221,7 +250,7 @@
         });
     });
 
-    const lastUpdated = new Date('2025-01-16T19:51:00');
+    const lastUpdated = new Date('2025-01-18T:14:15');
 
     function calculateTimePassed(lastUpdated) {
         const now = new Date();
