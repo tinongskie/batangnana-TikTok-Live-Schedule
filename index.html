@@ -1,331 +1,663 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>TikTok batangnana live schedule</title>
+
     <style>
+
         body {
+
             font-family: Arial, sans-serif;
+
             margin: 0;
+
             padding: 0;
+
             background-color: #f9f9f9;
+
             color: #333;
+
         }
+
+
 
         header {
+
             background-color: #ff0050;
+
             color: white;
+
             text-align: center;
+
             padding: 20px 0;
+
         }
+
+
 
         header h1 {
+
             font-size: 2em;
+
             margin: 0;
+
         }
+
+
 
         main {
+
             max-width: 800px;
+
             margin: 20px auto;
+
             padding: 20px;
+
             background: white;
+
             border-radius: 10px;
+
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 20px;
+
         }
+
+
 
         .schedule {
+
             flex: 2;
+
         }
+
+
 
         .schedule h2 {
+
             font-size: 1.8em;
+
             color: #ff0050;
+
             margin-bottom: 10px;
+
         }
+
+
 
         .schedule p, .schedule ul, .schedule li {
+
             margin: 10px 0;
+
         }
+
+
 
         .schedule ul {
+
             list-style-type: none;
+
             padding: 0;
+
         }
+
+
 
         .schedule li {
+
             font-size: 1.1em;
+
         }
+
+
 
         .image-container {
+
             text-align: center;
+
         }
+
+
 
         .image-container img {
+
             max-width: 100%;
+
             height: auto;
+
         }
+
+
 
         footer {
+
             text-align: center;
+
             padding: 10px 0;
+
             margin-top: 20px;
+
             background-color: #333;
+
             color: white;
+
         }
+
+
 
         footer a {
+
             color: #ff0050;
+
             text-decoration: none;
+
         }
+
+
 
         footer a:hover {
+
             text-decoration: underline;
+
         }
+
+
 
         .volume-control {
+
             margin-top: 20px;
+
             text-align: center;
+
         }
+
+
 
         .volume-control input {
+
             width: 100%;
+
             max-width: 300px;
+
         }
+
+
 
         @media (max-width: 768px) {
+
             main {
+
                 flex-direction: column;
+
                 text-align: center;
+
             }
 
+
+
             header h1 {
+
                 font-size: 1.8em;
+
             }
+
+
 
             .schedule {
+
                 flex: 1;
+
             }
 
+
+
             .schedule h2 {
+
                 font-size: 1.5em;
+
             }
+
+
 
             footer {
+
                 font-size: 0.9em;
+
             }
+
         }
+
+
 
         @media (max-width: 480px) {
+
             header h1 {
+
                 font-size: 1.5em;
+
             }
+
+
 
             .schedule h2 {
+
                 font-size: 1.2em;
+
             }
+
+
 
             .schedule li {
+
                 font-size: 1em;
+
             }
+
+
 
             .image-container img {
+
                 max-width: 100%;
+
                 height: auto;
+
             }
+
                     margin: 0;
+
             height: 200vh; /* Extend page height to enable scrolling */
+
             font-family: Arial, sans-serif;
+
         }
+
+
 
         #image-container {
+
             position: fixed; /* Keeps the image fixed relative to the viewport */
+
             top: 75%; /* Start the image lower on the viewport */
+
             right: 0; /* Position the image on the right side */
+
             transform: translateY(-50%); /* Adjust for vertical centering */
+
             transition: opacity 0.3s ease;
+
         }
+
+
 
         #image-container img {
+
             width: 200px; /* Adjust the image size */
+
             height: auto;
+
         }
+
     </style>
+
 </head>
+
 <body>
+
 <audio id="bgMusic" loop autoplay>
+
     <source src="WEBSITE TEST/BG.mp3" type="audio/mpeg">
+
     Your browser does not support the audio element.
+
 </audio>
+
+
 
 <audio id="secondBgMusic" loop autoplay>
+
     <source src="WEBSITE TEST/bgmusic2.mp3" type="audio/mpeg">
+
     Your browser does not support the audio element.
+
 </audio>
 
+
+
 <div style="position: fixed; top: 10px; right: 10px; background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999;">
+
     <button id="toggleButton">Stop Music</button>
+
 </div>
+
+
 
 <div class="volume-control" style="text-align: center; margin-top: 20px;">
+
     <label for="volumeSlider">Adjust Volume:</label>
+
     <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+
 </div>
 
+
+
 <div style="text-align: center; margin-top: 20px;">
+
     <label for="musicSelector">Choose Background Music:</label>
+
     <input type="file" id="musicSelector" accept="audio/*">
+
 </div>
 
+
+
 <div style="text-align: center; margin-top: 20px;">
+
     <label for="bgMusicSelector">Select Background Music:</label>
+
     <select id="bgMusicSelector">
+
         <option value="bgMusic">Default BG Music</option>
+
         <option value="secondBgMusic">Second BG Music</option>
+
     </select>
+
 </div>
+
+
 
     <div id="image-container">
+
         <img src="background/background.png" alt="Background">
+
     </div>
 
+
+
 <script>
+
         const imageContainer = document.getElementById('image-container');
 
+
+
         window.addEventListener('scroll', () => {
+
             const scrollY = window.scrollY; // Get the vertical scroll position
 
+
+
             // Adjust the image position based on scroll
+
             imageContainer.style.transform = `translateY(calc(-50% + ${scrollY}px))`;
+
         });
+
 		
+
     document.addEventListener("DOMContentLoaded", function () {
+
         const bgMusic = document.getElementById("bgMusic");
+
         const secondBgMusic = document.getElementById("secondBgMusic");
+
         const toggleButton = document.getElementById("toggleButton");
+
         const volumeSlider = document.getElementById("volumeSlider");
+
         const musicSelector = document.getElementById("musicSelector");
+
         const bgMusicSelector = document.getElementById("bgMusicSelector");
 
+
+
         bgMusic.volume = 0.2;
+
         secondBgMusic.volume = 0.5;
 
+
+
         toggleButton.addEventListener("click", function () {
+
             if (bgMusic.paused && secondBgMusic.paused) {
+
                 bgMusic.play();
+
                 toggleButton.textContent = "Stop Music";
+
             } else {
+
                 bgMusic.pause();
+
                 secondBgMusic.pause();
+
                 toggleButton.textContent = "Play Music";
+
             }
+
         });
+
+
 
         volumeSlider.addEventListener("input", function () {
+
             bgMusic.volume = volumeSlider.value;
+
             secondBgMusic.volume = volumeSlider.value;
+
         });
+
+
 
         musicSelector.addEventListener("change", function (event) {
+
             const file = event.target.files[0];
+
             if (file) {
+
                 const fileURL = URL.createObjectURL(file);
+
                 bgMusic.src = fileURL;
+
                 bgMusic.play();
+
                 toggleButton.textContent = "Stop Music";
+
             }
+
         });
 
+
+
         bgMusicSelector.addEventListener("change", function () {
+
             if (bgMusicSelector.value === "bgMusic") {
+
                 secondBgMusic.pause();
+
                 bgMusic.play();
+
             } else {
+
                 bgMusic.pause();
+
                 secondBgMusic.play();
+
             }
+
         });
+
     });
+
+
 
     const lastUpdated = new Date('2025-01-18T:14:15');
 
+
+
     function calculateTimePassed(lastUpdated) {
+
         const now = new Date();
+
         const diffInMilliseconds = now - lastUpdated;
+
         const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+
         const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
+
+
         let timePassedText = `${diffInHours} hours ago`;
+
         if (diffInDays >= 1) {
+
             timePassedText = `${diffInDays} day(s) ago`;
+
         }
 
+
+
         return timePassedText;
+
     }
 
+
+
     document.addEventListener("DOMContentLoaded", function () {
+
         document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleString();
+
         document.getElementById('timePassed').textContent = calculateTimePassed(lastUpdated);
+
     });
+
 </script>
 
+
+
 <header>
+
     <h1>Batangnana TikTok Live Schedule</h1>
+
 </header>
+
 <main>
+
     <div class="schedule">
+
         <h2>Upcoming Lives</h2>
+
         <h3>THIS PAGE IS BETA VERSION</h3>
+
         <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
+
         <ul>
+
             <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
+
             <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
+
             <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
+
             <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
+
             <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
+
             <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
+
         </ul>
+
         <p>Schedule updated last 11/20/2024 (Wednesday)</p>
+
         <p>Make sure to follow me on TikTok for updates and surprises!</p>
+
     </div>
+
     <div class="image-container">
+
         <img src="batangnana.png" alt="Batangnana Live Stream">
+
     </div>
+
 </main>
+
 <center>
+
     <p>memes</p>
+
     <div class="image-container">
+
         <img src="meme1.jpg" alt="Batangnana Live Stream">
+
         <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
+
     </div>
+
     <p>pose ni nana</p>
+
     <div class="image-container">
+
         <img src="pose1.jpg" alt="pose ni nana">
+
     </div>
+
     <a href="pose1.jpg" download="pose1.jpg">Download</a>
+
     <div class="image-container">
+
         <img src="awra ni bunanak.jpg" alt="pose ni nana">
+
     </div>
+
     <a href="awra ni bunanak.jpg" download="awra ni bunanak.jpg">Download</a>
+
     <div class="image-container">
+
         <img src="HAHAHAHAHA cute.jpg" alt="pose ni nana">
+
     </div>
+
     <a href="HAHAHAHAHA cute.jpg" download="HAHAHAHAHA cute.jpg">Download</a>
 
+
+
     <h3>3D <a href="3dvideos.html" target="_self">VIDEOS</a></h3>
+
     <h3>Best of 2024 <a href="BestOf2024.html" target="_self">2024VIDEOS</a></h3>
+
     <h3>wanna play games? <a href="games.html" target="_self">click here</a></h3>
+
     <h3>join to my discord server <a href="https://discord.gg/xGN86DXNVQ" target="_self">here!</a></h3>
+
     <a href="index(old).html" target="_self">Go to Original version</a>
+
+     <h3>hi sa mga walang jowa sa 14! tulog tayo</h3>
 </center>
+
         <footer>
+
         <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
+
         <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_self">Facebook</a></p>
+
         <p>Follow Fia on  <a href="unavailable.html" target="_self">TikTok</a></p>
+
         <p>Website updated on <span id="lastUpdated"></span> (<span id="timePassed"></span>)</p>
+
     </footer>
+
 </body>
+
 </html>
+
