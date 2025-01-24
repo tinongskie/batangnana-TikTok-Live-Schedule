@@ -501,46 +501,27 @@
     });
 
 
+const lastUpdated = new Date('2025-01-24T14:07:00');
 
-    const lastUpdated = new Date('2025-01-18T:14:15');
+function calculateTimePassed(lastUpdated) {
+    const now = new Date();
+    const diffInMilliseconds = now - lastUpdated;
+    const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
-
-
-    function calculateTimePassed(lastUpdated) {
-
-        const now = new Date();
-
-        const diffInMilliseconds = now - lastUpdated;
-
-        const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
-
-        const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
-
-
-
-        let timePassedText = `${diffInHours} hours ago`;
-
-        if (diffInDays >= 1) {
-
-            timePassedText = `${diffInDays} day(s) ago`;
-
-        }
-
-
-
-        return timePassedText;
-
+    let timePassedText = `${diffInHours} hours ago`;
+    if (diffInDays >= 1) {
+        timePassedText = `${diffInDays} day(s) ago`;
     }
 
+    return timePassedText;
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleString();
+    document.getElementById('timePassed').textContent = calculateTimePassed(lastUpdated);
+});
 
-    document.addEventListener("DOMContentLoaded", function () {
-
-        document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleString();
-
-        document.getElementById('timePassed').textContent = calculateTimePassed(lastUpdated);
-
-    });
 
 </script>
 
@@ -630,7 +611,7 @@
 
     <a href="HAHAHAHAHA cute.jpg" download="HAHAHAHAHA cute.jpg">Download</a>
 
-
+    <h3>wallpapers? <a href="wallpaper/wallpaper.html" target="_self">click here</a></h3>
 
     <h3>3D <a href="3dvideos.html" target="_self">VIDEOS</a></h3>
 
