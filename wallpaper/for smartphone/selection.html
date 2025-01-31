@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        header, footer {
+            background-color: #ff0050;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #ff0050;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #d60042;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h3>choose a hero</h3>
+    </header>
+
+    <div class="button-container">
+        <button onclick="window.open('nana.html', '_self')">nana</button>
+        <button onclick="window.open('zilong.html', '_self')">zilong</button>
+		<button onclick="window.open('lance.html', '_self')">lance</button>
+        <button onclick="window.open('carmilla.html', '_blank')">carmilla</button>
+    </div>
+
+    <footer>
+        <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
+    </footer>
+</body>
+</html>
