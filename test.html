@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Tabs</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('background.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tabs {
+            display: flex;
+            background: #333;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+            .tab:hover {
+                background: #444;
+                transform: scale(1.05);
+            }
+
+            .tab.active {
+                background: #225;
+                border-bottom: 3px solid #00d4ff;
+            }
+
+        .content {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+            opacity: 0;
+        }
+
+            .content.active {
+                display: block;
+                opacity: 1;
+            }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('home')">Home</div>
+            <div class="tab" onclick="showTab('videos')">3D Videos</div>
+            <div class="tab" onclick="showTab('games')">Games</div>
+            <div class="tab" onclick="showTab('wallpapers')">Wallpapers</div>
+            <div class="tab" onclick="showTab('others')">Others</div>
+        </div>
+        <div id="home" class="content active">
+            <style>
+
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f9f9f9;
+                    color: #333;
+                }
+
+
+
+                header {
+                    background-color: #ff0050;
+                    color: white;
+                    text-align: center;
+                    padding: 20px 0;
+                }
+
+
+
+                    header h1 {
+                        font-size: 2em;
+                        margin: 0;
+                    }
+
+
+
+                main {
+                    max-width: 800px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    background: white;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+
+
+                .schedule {
+                    flex: 2;
+                }
+
+
+
+                    .schedule h2 {
+                        font-size: 1.8em;
+                        color: #ff0050;
+                        margin-bottom: 10px;
+                    }
+
+
+
+                    .schedule p, .schedule ul, .schedule li {
+                        margin: 10px 0;
+                    }
+
+
+
+                    .schedule ul {
+                        list-style-type: none;
+                        padding: 0;
+                    }
+
+
+
+                    .schedule li {
+                        font-size: 1.1em;
+                    }
+
+
+
+                .image-container {
+                    text-align: center;
+                }
+
+
+
+                    .image-container img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+
+
+
+                footer {
+                    text-align: center;
+                    padding: 10px 0;
+                    margin-top: 20px;
+                    background-color: #333;
+                    color: white;
+                }
+
+
+
+                    footer a {
+                        color: #ff0050;
+                        text-decoration: none;
+                    }
+
+
+
+                        footer a:hover {
+                            text-decoration: underline;
+                        }
+
+
+
+                .volume-control {
+                    margin-top: 20px;
+                    text-align: center;
+                }
+
+
+
+                    .volume-control input {
+                        width: 100%;
+                        max-width: 300px;
+                    }
+
+
+
+                @media (max-width: 768px) {
+
+                    main {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+
+
+
+                    header h1 {
+                        font-size: 1.8em;
+                    }
+
+
+
+                    .schedule {
+                        flex: 1;
+                    }
+
+
+
+                        .schedule h2 {
+                            font-size: 1.5em;
+                        }
+
+
+
+                    footer {
+                        font-size: 0.9em;
+                    }
+                }
+
+
+
+                @media (max-width: 480px) {
+
+                    header h1 {
+                        font-size: 1.5em;
+                    }
+
+
+
+                    .schedule h2 {
+                        font-size: 1.2em;
+                    }
+
+
+
+                    .schedule li {
+                        font-size: 1em;
+                    }
+
+
+
+                    .image-container img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+
+                    margin: 0;
+
+                    height: 200vh; /* Extend page height to enable scrolling */
+                    font-family: Arial, sans-serif;
+                }
+
+
+
+                #image-container {
+                    position: fixed; /* Keeps the image fixed relative to the viewport */
+
+                    top: 75%; /* Start the image lower on the viewport */
+
+                    right: 0; /* Position the image on the right side */
+
+                    transform: translateY(-50%); /* Adjust for vertical centering */
+
+                    transition: opacity 0.3s ease;
+                }
+
+
+
+                    #image-container img {
+                        width: 200px; /* Adjust the image size */
+
+                        height: auto;
+                    }
+            </style>
+
+            <script>
+                const lastUpdated = new Date('2025-02-12T10:53:00');
+
+                function calculateTimePassed(lastUpdated) {
+                    const now = new Date();
+                    const diffInMilliseconds = now - lastUpdated;
+                    const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+                    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+
+                    let timePassedText = `${diffInHours} hours ago`;
+                    if (diffInDays >= 1) {
+                        timePassedText = `${diffInDays} day(s) ago`;
+                    }
+
+                    return timePassedText;
+                }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById('lastUpdated').textContent = lastUpdated.toLocaleString();
+                    document.getElementById('timePassed').textContent = calculateTimePassed(lastUpdated);
+                });
+
+
+            </script>
+            <header>
+
+                <h1>Batangnana TikTok Live Schedule</h1>
+
+            </header>
+
+            <main>
+
+                <div class="schedule">
+
+                    <h2>Upcoming Lives</h2>
+
+                    <p>Stay tuned for my TikTok Live streams! Here's when you can catch me:</p>
+
+                    <ul>
+
+                        <li><strong>Monday:</strong> 8:00 PM - 10:00 PM</li>
+
+                        <li><strong>Tuesday:</strong> 8:00 PM - 10:00 PM</li>
+
+                        <li><strong>Wednesday:</strong> 8:00 PM - 10:00 PM</li>
+
+                        <li><strong>Thursday:</strong> 8:00 PM - 10:00 PM</li>
+
+                        <li><strong>Friday:</strong> 8:00 PM - 10:00 PM</li>
+
+                        <li><strong>Saturday:</strong> 2:00 PM - 4:00 PM</li>
+
+                    </ul>
+
+                    <p>Schedule updated last 11/20/2024 (Wednesday)</p>
+
+                    <p>Make sure to follow me on TikTok for updates and surprises!</p>
+
+                </div>
+
+                <div class="image-container">
+
+                    <img src="batangnana.png" alt="Batangnana Live Stream">
+
+                </div>
+
+            </main>
+
+            <center>
+                <h3>watch my replay videos <a href="wallpaper/construction.html" target="_self">HERE</a></h3>
+
+                <p>memes</p>
+
+                <div class="image-container">
+
+                    <img src="meme1.jpg" alt="Batangnana Live Stream">
+
+                    <p>Nana asked meta ai if can you be my lover, Meta AI said ask the turtle so nana asked the turtle</p>
+
+                </div>
+
+                <p>pose ni nana</p>
+
+                <div class="image-container">
+
+                    <img src="pose1.jpg" alt="pose ni nana">
+
+                </div>
+
+                <a href="pose1.jpg" download="pose1.jpg">Download</a>
+
+                <div class="image-container">
+
+                    <img src="awra ni bunanak.jpg" alt="pose ni nana">
+
+                </div>
+
+                <a href="awra ni bunanak.jpg" download="awra ni bunanak.jpg">Download</a>
+
+                <div class="image-container">
+
+                    <img src="HAHAHAHAHA cute.jpg" alt="pose ni nana">
+
+                </div>
+
+                <a href="HAHAHAHAHA cute.jpg" download="HAHAHAHAHA cute.jpg">Download</a>
+
+                <h3>join to my discord server <a href="https://discord.gg/xGN86DXNVQ" target="_self">here!</a></h3>
+
+                <a href="index(old).html" target="_self">Go to Original version</a>
+
+                <h3>THIS WEBSITE WILL BE MOVED SOON!!</h3>
+            </center>
+
+            <footer>
+
+                <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
+
+                <p>Follow me on  <a href="https://www.facebook.com/profile.php?id=100092747559301" target="_self">Facebook</a></p>
+
+                <p>Website updated on <span id="lastUpdated"></span> (<span id="timePassed"></span>)</p>
+        </div>
+        <div id="videos" class="content">
+            <h2>3D Videos</h2>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>3D VIDEOS</title>
+                <style>
+                    /* General body styling */
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f9f9f9;
+                        color: #333;
+                    }
+
+                    /* Header styling */
+                    header {
+                        background-color: #ff0050; /* TikTok's signature pink */
+                        color: white;
+                        text-align: center;
+                        padding: 20px 0;
+                    }
+
+                        header h1 {
+                            font-size: 2em;
+                            margin: 0;
+                        }
+
+                    /* Main content styling */
+                    main {
+                        max-width: 800px;
+                        margin: 20px auto;
+                        padding: 20px;
+                        background: white;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        display: flex;
+                        flex-wrap: wrap; /* Adjust layout on smaller screens */
+                        gap: 20px;
+                    }
+
+                    /* Video styling */
+                    .video-container video {
+                        width: 60%; /* Adjust width for videos */
+                        height: auto; /* Maintain aspect ratio */
+                        display: block;
+                        margin: 10px auto; /* Center the video */
+                        border-radius: 8px; /* Optional: Rounded corners */
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for videos */
+                    }
+
+                    /* Footer styling */
+                    footer {
+                        text-align: center;
+                        padding: 10px 0;
+                        margin-top: 20px;
+                        background-color: #333;
+                        color: white;
+                    }
+
+                        footer a {
+                            color: #ff0050;
+                            text-decoration: none;
+                        }
+
+                            footer a:hover {
+                                text-decoration: underline;
+                            }
+
+                    /* Media Query for Mobile Devices */
+                    @media (max-width: 768px) {
+                        main {
+                            flex-direction: column; /* Stack the elements vertically */
+                            text-align: center;
+                        }
+
+                        header h1 {
+                            font-size: 1.8em;
+                        }
+
+                        footer {
+                            font-size: 0.9em;
+                        }
+
+                        .video-container video {
+                            width: 80%; /* Adjust video size for smaller screens */
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        header h1 {
+                            font-size: 1.5em;
+                        }
+
+                        .video-container video {
+                            width: 90%; /* Further reduce video size on small screens */
+                        }
+                    }
+                </style>
+            </head>
+            <body>
+                <header>
+                    <h1>Best of 2024 Videos</h1>
+                </header>
+
+                <main>
+                    <center>
+                        <!-- Video Section -->
+
+
+                        <section class="video-container">
+                            <div>
+                                <h2>3D VIDEOS</h2>
+
+                                <h3>it hurts</h3>
+                                <video controls>
+                                    <source src="3d videos/it hurts.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <h3>alpha ka single</h3>
+                            <video controls>
+                                <source src="3d videos/alpha ka single.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+         </div>
+
+        <h3>nana kasi</h3>
+        <video controls>
+            <source src="3d videos/nana kasi.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h3>broom broom ni nana</h3>
+    <video controls>
+        <source src="3d videos/broom broom ni nana.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+    <h3>nana's TikTok dance (normal skin)</h3>
+    <video controls>
+        <source src="3d videos/7a64285d0f214aada6ae4b67cc7a5cae (1).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+    <h3>nana's TikTok dance (normal and summer skin)</h3>
+    <video controls>
+        <source src="3d videos/copy_348BEC82-38D6-4FF9-9DEC-285A0F2A442C (1).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+    <h3>chicken dance ni nana</h3>
+    <video controls>
+        <source src="3d videos/chicken dance ni nana 2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+    <div>
+        <h3>sumali na sila</h3>
+        <video controls>
+            <source src="3d videos/sumali na sila hahahahah.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>kili kili</h3>
+        <video controls>
+            <source src="3d videos/kili kili.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>diwow ni zilong</h3>
+        <video controls>
+            <source src="3d videos/anyari sa zilong.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>sana ok lang kayo</h3>
+        <video controls>
+            <source src="3d videos/sana ok lang kayo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>Run bunana</h3>
+        <video controls>
+            <source src="3d videos/Run bunana.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>Kambal ni nana</h3>
+        <video controls>
+            <source src="3d videos/kambal ni nana.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>Capcut edit ni nana</h3>
+        <video controls>
+            <source src="3d videos/0119.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <h3>Sayaw nila zilong at lance</h3>
+        <video controls>
+            <source src="3d videos/sayaw nila zilong at lance.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h3>tumbling (summersalt)</h3>
+    <video controls>
+        <source src="3d videos/tumbling.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+    <h3>basurahan (trashcan)</h3>
+    <video controls>
+        <source src="3d videos/trashcan.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    </div>
+
+    </section>
+
+    <h3>More 3D videos will be uploaded soon!</h3>
+    <h4>NOTE: THERE IS NO NEW UPLOADED 3D VIDEOS BY THIS TIME BECAUSE I ACCIDENTALLY FORMATTED THE WRONG DRIVE.ALL PENDING 3D EDITS WILL BE CONTINUED AS SOON AS POSSIBLE. THANK YOU FOR YOUR PATIENCE.</h4>
+    <!-- Back to Main Page -->
+    <section class="back-link">
+        <p>Back to <a href="index.html">Live Schedule</a></p>
+    </section>
+    </center>
+    </main>
+
+    <footer>
+        <p>Follow us on <a href="#">TikTok</a></p>
+    </footer>
+
+    <script>
+        // Get all video elements
+        const videos = document.querySelectorAll('video');
+
+        // Function to scroll to the next video when one finishes
+        function scrollToNextVideo(currentVideo) {
+            let nextVideo = currentVideo.nextElementSibling;
+
+            // If the current video is the last, do nothing
+            if (!nextVideo) return;
+
+            // Scroll the next video into view
+            nextVideo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Add event listener to each video
+        videos.forEach((video) => {
+            video.addEventListener('ended', function () {
+                scrollToNextVideo(video);
+            });
+        });
+    </script>
+</body>
+</html>
+
+    </div>
+<div id="games" class="content">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GAMES</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f8ff;
+            }
+
+            h1 {
+                color: #333;
+                margin-top: 50px;
+            }
+
+            p {
+                color: #555;
+            }
+
+            a {
+                font-size: 20px;
+                color: #007BFF;
+                text-decoration: none;
+                padding: 10px 20px;
+                margin: 10px;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+            }
+
+                a:hover {
+                    background-color: #007BFF;
+                    color: #fff;
+                    transform: scale(1.1);
+                }
+
+            .container {
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>You can choose any games here</h1>
+        <p>By the way welcome User! any games can't record your personal data or personal information</p>
+
+        <div class="container">
+            <center>
+                <a href="PCgames.html" target="_blank">PC games</a><br>
+                <a href="TODentrance.html" target="_blank">Truth Or Dare (TAGALOG)</a>
+                <a href="PCpicturequizgame.html" target="_blank">Identify the pc parts</a>
+                <a href="buildinggame.html" target="_blank">PC building game</a>
+                <a href="MLccquizgame.html" target="_blank">ML quiz game</a>
+                <a href="guess the logo.html" target="_blank">guess the logo (BETA)</a>
+                <a href="MahalKita.html" target="_blank">Mahal kita (CONFESS)</a>
+                <a href="nointernet.html" target="_blank">no internet meme</a>
+
+            </center>
+        </div>
+    </body>
+
+</div>
+    div id="wallpapers" class="content">
+<h2>wallpapers</h2>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #ff0050;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+            header h1 {
+                font-size: 2em;
+                margin: 0;
+            }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .device-link {
+            display: inline-block;
+            background-color: #ff0050;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .device-link:hover {
+                background-color: #d60042;
+                transform: translateY(-2px);
+            }
+
+            .device-link:active {
+                transform: translateY(0);
+            }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+            footer a {
+                color: #ff0050;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Select Your Device</h1>
+    </header>
+
+    <main>
+        <a href="for wallpaper/smartphone/selection.html" class="device-link">For Smartphone</a>
+        <a href="wallpaper/downlod.html" class="device-link">For Laptops and Desktops</a>
+    </main>
+
+    <footer>
+        <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
+    </footer>
+</body>
+
+    </div>
+</html>
+<div id="others" class="content">
+    <h2>support batangnana</h2>
+    <p>Miscellaneous content goes here.</p>
+</div>
+    </div>
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+        document.getElementById(tabId).classList.add('active');
+        document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+
+        // Save selected tab in localStorage
+        localStorage.setItem('selectedTab', tabId);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const lastTab = localStorage.getItem('selectedTab') || 'home';
+        showTab(lastTab);
+    });
+</script>
+</body>
+</html>
