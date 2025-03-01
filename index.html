@@ -364,7 +364,7 @@
 
 
 
-                    const lastUpdated = new Date('2025-03-01T20:21:00');
+                    const lastUpdated = new Date('2025-03-01T20:30:00');
 
                     function calculateTimePassed(lastUpdated) {
                         const now = new Date();
@@ -663,11 +663,11 @@
                 const video = document.querySelector('video');
                 video.onloadedmetadata = function () {
                     if (video.videoHeight > video.videoWidth) {
-                        video.style.width = "240px";
-                        video.style.height = "426px";
+                        video.style.width = "90%";
+                        video.style.height = "auto";
                     } else {
-                        video.style.width = "426px";
-                        video.style.height = "240px";
+                        video.style.width = "60%";
+                        video.style.height = "auto";
                     }
                 };
             };
