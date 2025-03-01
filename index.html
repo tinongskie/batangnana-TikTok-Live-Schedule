@@ -663,11 +663,11 @@
                 const video = document.querySelector('video');
                 video.onloadedmetadata = function () {
                     if (video.videoHeight > video.videoWidth) {
-                        video.style.width = "360px";
-                        video.style.height = "640px";
+                        video.style.width = "240px";
+                        video.style.height = "426px";
                     } else {
-                        video.style.width = "640px";
-                        video.style.height = "360px";
+                        video.style.width = "426px";
+                        video.style.height = "240px";
                     }
                 };
             };
