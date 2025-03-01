@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hero wallpaper selection</title>
+    <title>Hero Wallpaper Selection</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,26 +42,39 @@
             transition: background-color 0.3s;
         }
 
-        button:hover {
-            background-color: #d60042;
-        }
+            button:hover {
+                background-color: #d60042;
+            }
     </style>
 </head>
 
 <body>
-    <header>
-        <h3>choose a hero</h3>
-    </header>
 
+    <h3>Choose a Hero</h3>
     <div class="button-container">
-        <button onclick="window.open('nana.html', '_self')">nana</button>
-        <button onclick="window.open('zilong.html', '_self')">zilong</button>
-		<button onclick="window.open('lance.html', '_self')">lance</button>
-        <button onclick="window.open('carmilla.html', '_self')">carmilla</button>
+        <label for="menu1">Choose a hero:</label>
+        <select id="menu1">
+            <option value="carmilla.html">Carmilla</option>
+            <option value="lance.html">Lance</option>
+            <option value="nana.html">Nana</option>
+            <option value="zilong.html">Zilong</option>
+        </select>
+        <br>
+        <button onclick="openPage()">Open</button>
     </div>
+
+    <script>
+        function openPage() {
+            const menu1 = document.getElementById("menu1").value;
+            if (menu1) {
+                window.location.href = menu1;
+            }
+        }
+    </script>
 
     <footer>
         <p>© 2025 My TikTok Lives | Connect with me on <a href="https://www.tiktok.com/@batangnana" target="_self">TikTok</a></p>
     </footer>
+
 </body>
 </html>
