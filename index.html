@@ -658,6 +658,20 @@ an play vide<!DOCTYPE html>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Archive.org Video Player</title>
         </head>
+        <script>
+            window.onload = function () {
+                const video = document.querySelector('video');
+                video.onloadedmetadata = function () {
+                    if (video.videoHeight > video.videoWidth) {
+                        video.style.width = "360px";
+                        video.style.height = "640px";
+                    } else {
+                        video.style.width = "640px";
+                        video.style.height = "360px";
+                    }
+                };
+            };
+        </script>
         <body>
             <h4>TIKTOK_LIVE_REPLAY-2025-02-16-19-41-38</h4>
             <video controls width="640">
@@ -665,7 +679,7 @@ an play vide<!DOCTYPE html>
                 Your browser does not support the video tag.
             </video>
 
-    </html>
+        </html>
 
     </div>
 
