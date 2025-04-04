@@ -4,68 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Event</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            transition: background 0.3s, color 0.3s;
-        }
+<style>
+    @font-face {
+        font-family: 'njnaruto';
+        src: url('njnaruto.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-        .menu-container {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            cursor: pointer;
-            font-size: 24px;
-            background: #333;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
+    body {
+        font-family: 'njnaruto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        transition: background 0.3s, color 0.3s;
+    }
 
-        .tabs {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 20px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            text-align: right;
-        }
+    .menu-container {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 24px;
+        background: #333;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
 
-            .tabs a {
-                display: block;
-                text-decoration: none;
-                color: black;
-                padding: 8px 15px;
-            }
+    .tabs {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        text-align: right;
+    }
 
-                .tabs a:hover {
-                    background: #ddd;
-                }
+    .tabs a {
+        display: block;
+        text-decoration: none;
+        color: black;
+        padding: 8px 15px;
+    }
 
-        .content {
-            display: none;
-            padding: 20px;
-        }
+    .tabs a:hover {
+        background: #ddd;
+    }
 
-        .active {
-            display: block;
-        }
+    .content {
+        display: none;
+        padding: 20px;
+    }
 
-        .settings {
-            margin-top: 20px;
-        }
+    .active {
+        display: block;
+    }
 
-        .dark-mode {
-            background: #121212;
-            color: white;
-        }
-    </style>
+    .settings {
+        margin-top: 20px;
+    }
+
+    .dark-mode {
+        background: #121212;
+        color: white;
+    }
+</style>
+
 </head>
 <body>
     <div class="menu-container" onclick="toggleTabs()">&#x22EE;</div>
@@ -92,208 +100,155 @@
 
             <title>TikTok batangnana live schedule</title>
 
-            <style>
+<style>
+    @font-face {
+        font-family: 'njnaruto';
+        src: url('njnaruto.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    body {
+        font-family: 'njnaruto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    header {
+        background-color: #ff0050;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+    main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .schedule {
+        flex: 2;
+    }
+
+        .schedule h2 {
+            font-size: 1.8em;
+            color: #ff0050;
+            margin-bottom: 10px;
+        }
+
+        .schedule p, .schedule ul, .schedule li {
+            margin: 10px 0;
+        }
+
+        .schedule ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .schedule li {
+            font-size: 1.1em;
+        }
+
+    .image-container {
+        text-align: center;
+    }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    footer {
+        text-align: center;
+        padding: 10px 0;
+        margin-top: 20px;
+        background-color: #333;
+        color: white;
+    }
+
+        footer a {
+            color: #ff0050;
+            text-decoration: none;
+        }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+    @media (max-width: 768px) {
+        main {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+        }
+
+        .schedule {
+            flex: 1;
+        }
+
+            .schedule h2 {
+                font-size: 1.5em;
+            }
+
+        footer {
+            font-size: 0.9em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header h1 {
+            font-size: 1.5em;
+        }
+
+        .schedule h2 {
+            font-size: 1.2em;
+        }
+
+        .schedule li {
+            font-size: 1em;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        margin: 0;
+        height: 200vh; /* Extend page height to enable scrolling */
+        font-family: 'LOVELETTER', Arial, sans-serif;
+    }
+
+    #image-container {
+        position: fixed; /* Keeps the image fixed relative to the viewport */
+        top: 75%; /* Start the image lower on the viewport */
+        right: 0; /* Position the image on the right side */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+        transition: opacity 0.3s ease;
+    }
+
+        #image-container img {
+            width: 200px; /* Adjust the image size */
+            height: auto;
+        }
+</style>
 
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                    background-color: #f9f9f9;
-                    color: #333;
-                }
-
-
-
-                header {
-                    background-color: #ff0050;
-                    color: white;
-                    text-align: center;
-                    padding: 20px 0;
-                }
-
-
-
-                    header h1 {
-                        font-size: 2em;
-                        margin: 0;
-                    }
-
-
-
-                main {
-                    max-width: 800px;
-                    margin: 20px auto;
-                    padding: 20px;
-                    background: white;
-                    border-radius: 10px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                }
-
-
-
-                .schedule {
-                    flex: 2;
-                }
-
-
-
-                    .schedule h2 {
-                        font-size: 1.8em;
-                        color: #ff0050;
-                        margin-bottom: 10px;
-                    }
-
-
-
-                    .schedule p, .schedule ul, .schedule li {
-                        margin: 10px 0;
-                    }
-
-
-
-                    .schedule ul {
-                        list-style-type: none;
-                        padding: 0;
-                    }
-
-
-
-                    .schedule li {
-                        font-size: 1.1em;
-                    }
-
-
-
-                .image-container {
-                    text-align: center;
-                }
-
-
-
-                    .image-container img {
-                        max-width: 100%;
-                        height: auto;
-                    }
-
-
-
-                footer {
-                    text-align: center;
-                    padding: 10px 0;
-                    margin-top: 20px;
-                    background-color: #333;
-                    color: white;
-                }
-
-
-
-                    footer a {
-                        color: #ff0050;
-                        text-decoration: none;
-                    }
-
-
-
-                        footer a:hover {
-                            text-decoration: underline;
-                        }
-
-
-
-
-
-
-
-                @media (max-width: 768px) {
-
-                    main {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-
-
-
-                    header h1 {
-                        font-size: 1.8em;
-                    }
-
-
-
-                    .schedule {
-                        flex: 1;
-                    }
-
-
-
-                        .schedule h2 {
-                            font-size: 1.5em;
-                        }
-
-
-
-                    footer {
-                        font-size: 0.9em;
-                    }
-                }
-
-
-
-                @media (max-width: 480px) {
-
-                    header h1 {
-                        font-size: 1.5em;
-                    }
-
-
-
-                    .schedule h2 {
-                        font-size: 1.2em;
-                    }
-
-
-
-                    .schedule li {
-                        font-size: 1em;
-                    }
-
-
-
-                    .image-container img {
-                        max-width: 100%;
-                        height: auto;
-                    }
-
-                    margin: 0;
-
-                    height: 200vh; /* Extend page height to enable scrolling */
-                    font-family: Arial, sans-serif;
-                }
-
-
-
-                #image-container {
-                    position: fixed; /* Keeps the image fixed relative to the viewport */
-
-                    top: 75%; /* Start the image lower on the viewport */
-
-                    right: 0; /* Position the image on the right side */
-
-                    transform: translateY(-50%); /* Adjust for vertical centering */
-
-                    transition: opacity 0.3s ease;
-                }
-
-
-
-                    #image-container img {
-                        width: 200px; /* Adjust the image size */
-
-                        height: auto;
-                    }
-            </style>
 
         </head>
 
@@ -334,7 +289,7 @@
 
 
 
-                const lastUpdated = new Date('2025-04-04T20:12:00');
+                const lastUpdated = new Date('2025-04-04T21:06:00');
 
                 function calculateTimePassed(lastUpdated) {
                     const now = new Date();
@@ -469,94 +424,101 @@
     <iframe src="3dvideos.html" width="100%" height="600px" style="border: none;"></iframe>
 </div>
 <div id="Birthday event" class="content">
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Birthday Event</title>
-        <style>
-            body {
-                font-family: 'Poppins', sans-serif;
-                background: linear-gradient(to right, #ff9a9e, #fad0c4);
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Event</title>
+    <style>
+        @font-face {
+            font-family: 'njnaruto';
+            src: url('njnaruto.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-            .container {
-                max-width: 600px;
-                background: white;
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-                text-align: center;
-            }
+        body {
+            font-family: 'njnaruto', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-            h1, h2, h3, h4 {
-                color: #333;
-            }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
 
-            h1 {
-                font-size: 28px;
-                margin-bottom: 10px;
-            }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
 
-            p {
-                font-size: 16px;
-                color: #555;
-                margin-bottom: 20px;
-            }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
 
-            .requirements, .how-to-join {
-                text-align: left;
-                background: #f9f9f9;
-                padding: 15px;
-                border-radius: 8px;
-                margin-top: 10px;
-            }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
 
-                .requirements h4, .how-to-join h2 {
-                    font-size: 18px;
-                    margin: 8px 0;
-                }
+        .requirements, .how-to-join {
+            text-align: left;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
 
-            a {
-                color: #ff4b5c;
-                text-decoration: none;
-                font-weight: bold;
-            }
+        .requirements h4, .how-to-join h2 {
+            font-size: 18px;
+            margin: 8px 0;
+        }
 
-                a:hover {
-                    text-decoration: underline;
-                }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>🎉 Birthday Event 🎉</h1>
-            <h3>Event not yet started. Stay tuned for update.</h3>
-            <h3>🎯 Requirements:</h3>
-            <ul>
-                <li>✔ Must be 18 years old or above</li>
-                <li>✔ Must have reached Mythic rank</li>
-                <li>✔ Must follow <a href="https://www.tiktok.com/@batangnana" target="_blank">batangnana</a> on TikTok</li>
-                <li>✔ More requirements will be added soon!!</li>
-            </ul>
+        a {
+            color: #ff4b5c;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-            <h3>📌 Selection Process:</h3>
-            <ul>
-                <li>We will select 20 players</li>
-                <li>Round 1: 15 players will be selected</li>
-                <li>Round 2: 10 players will be selected</li>
-                <li>Round 3: 5 players will be selected</li>
-                <li>Final Round: 2 winners will be chosen</li>
-                <li>2 winners will get normal starlight</li>
-            </ul>
-		</div>
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Birthday Event 🎉</h1>
+        <h3>Event not yet started. Stay tuned for update.</h3>
+        <h3>🎯 Requirements:</h3>
+        <ul>
+            <li>✔ Must be 18 years old or above</li>
+            <li>✔ Must have reached Mythic rank</li>
+            <li>✔ Must follow <a href="https://www.tiktok.com/@batangnana" target="_blank">batangnana</a> on TikTok</li>
+            <li>✔ More requirements will be added soon!!</li>
+        </ul>
+
+        <h3>📌 Selection Process:</h3>
+        <ul>
+            <li>We will select 20 players</li>
+            <li>Round 1: 15 players will be selected</li>
+            <li>Round 2: 10 players will be selected</li>
+            <li>Round 3: 5 players will be selected</li>
+            <li>Final Round: 2 winners will be chosen</li>
+            <li>2 winners will get normal starlight</li>
+        </ul>
+    </div>
 </body>
 </html>
 </div>
@@ -567,44 +529,52 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GAMES</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin: 0;
-                padding: 0;
-                background-color: #f0f8ff;
-            }
+<style>
+    @font-face {
+        font-family: 'njnaruto';
+        src: url('njnaruto.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-            h1 {
-                color: #333;
-                margin-top: 50px;
-            }
+    body {
+        font-family: 'njnaruto', Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8ff;
+    }
 
-            p {
-                color: #555;
-            }
+    h1 {
+        color: #333;
+        margin-top: 50px;
+    }
 
-            a {
-                font-size: 20px;
-                color: #007BFF;
-                text-decoration: none;
-                padding: 10px 20px;
-                margin: 10px;
-                border-radius: 5px;
-                transition: all 0.3s ease;
-            }
+    p {
+        color: #555;
+    }
 
-                a:hover {
-                    background-color: #007BFF;
-                    color: #fff;
-                    transform: scale(1.1);
-                }
+    a {
+        font-size: 20px;
+        color: #007BFF;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
 
-            .container {
-                margin-top: 50px;
-            }
-        </style>
+        a:hover {
+            background-color: #007BFF;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+    .container {
+        margin-top: 50px;
+    }
+</style>
+
     </head>
     <body>
         <h1>You can choose any games here</h1>
@@ -647,41 +617,44 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dropdown Example</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                margin-top: 100px;
-                background-color: #f4f4f4;
-            }
+        <title>Wallpapers</title>
 
-            h1 {
-                color: #333;
-            }
 
-            select {
-                padding: 10px;
-                width: 250px;
-                margin: 10px 0;
-                border-radius: 5px;
-                border: 1px solid #ccc;
-            }
+<style>
+    body {
+        font-family: 'njnaruto', Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+        background-color: #f4f4f4;
+    }
 
-            button {
-                padding: 10px 20px;
-                background-color: #007BFF;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
+    h1 {
+        color: #333;
+    }
 
-                button:hover {
-                    background-color: #0056b3;
-                }
-        </style>
+    select {
+        padding: 10px;
+        width: 250px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
     </head>
     <body>
         <h1>wallpaper</h1>
@@ -714,47 +687,50 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Archive.org Video Player</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
-                margin: 0;
-                padding: 20px;
-            }
+<style>
+    body {
+        font-family: 'njnaruto', Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
 
-            h4 {
-                margin-top: 40px;
-                color: #333;
-            }
+    h4 {
+        margin-top: 40px;
+        color: #333;
+    }
 
-            video {
-                display: block;
-                margin: 0 auto 20px auto;
-            }
+    video {
+        display: block;
+        margin: 0 auto 20px auto;
+    }
 
-            #miniMs {
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                font-size: 14px;
-                font-weight: bold;
-                background: rgba(255, 255, 255, 0.8);
-                padding: 5px 10px;
-                border-radius: 5px;
-            }
+    #miniMs {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-family: 'njnaruto', Arial, sans-serif;
+    }
 
-            #popup {
-                position: fixed;
-                top: 40px;
-                right: 10px;
-                font-size: 12px;
-                background: rgba(0, 0, 0, 0.8);
-                color: #fff;
-                padding: 8px 12px;
-                border-radius: 5px;
-                display: none;
-            }
-        </style>
+    #popup {
+        position: fixed;
+        top: 40px;
+        right: 10px;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 5px;
+        display: none;
+        font-family: 'njnaruto', Arial, sans-serif;
+    }
+</style>
+
     </head>
 
     <body>
