@@ -79,6 +79,7 @@
     <div class="tabs" id="tabMenu">
         <a href="#" onclick="showContent('home')">Home</a>
         <a href="#" onclick="showContent('3D videos')">3D videos</a>
+		<a href="#" onclick="showcontent('stories')">stories</a>
         <a href="#" onclick="showContent('games')">games</a>
         <a href="#" onclick="showContent('wallpapers')">wallpapers</a>
         <a href="#" onclick="showContent('replay')">replay</a>
@@ -397,6 +398,8 @@
 
 
                 <p>go to <a href="index(old).html" target="_self">old verison</a></p>
+				
+				<a href="story.html" target="_self">Read stories</a>
 
 
             </center>
@@ -507,6 +510,131 @@
     </body>
 </html>
 </div>
+<div id="stories" class="content">
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aking Kwento</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to right, #f9f9f9, #f1f1f1);
+      color: #222;
+      line-height: 1.75;
+      padding: 40px 20px;
+    }
+
+    /* Main story card layout */
+    .story-card {
+      background: #fff;
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.2em;
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .lead {
+      font-weight: bold;
+      color: #444;
+      font-size: 1.15em;
+      margin-bottom: 20px;
+    }
+
+    .dialogue {
+      display: block;
+      font-style: italic;
+      color: #666;
+      padding-left: 20px;
+      margin: 10px 0;
+      border-left: 3px solid #ccc;
+    }
+
+    .ramdam {
+      font-style: italic;
+      color: #800080;
+      background: #f7e8ff;
+      padding: 2px 6px;
+      border-radius: 5px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #b30000;
+    }
+
+    @media (max-width: 600px) {
+      .story-card {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 1.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="story-card">
+    <h1>Noong College Student Pa Ako, Nagmomotor Pa Ako Papunta sa School</h1>
+
+    <p class="lead">Isang karanasan na hindi ko malilimutan...</p>
+
+    <p>Noong college student pa ako, nagmomotor pa ako papunta sa school galing bahay. <span class="highlight">11 kilometro</span> ang layo kaya inaasahan ko na malalate ako paminsan-minsan.</p>
+
+    <p>Pero noong <strong>November 22, 2022</strong> ng 7:00 AM, papunta pa lang ako sa school. Dumaan ako sa shortcut, at paglagpas sa balete, may napansin ako sa side mirror — parang may humabol sa akin na <span class="highlight">itim na anino</span>. Tumigil ako saglit para silipin... pero <em>wala akong nakita.</em></p>
+
+    <p>Dumiretso na ako sa university. Sa una, okay naman ang lahat. Habang naglalaro ako sa laptop, makalipas ang halos 30 minuto, bigla akong <span class="ramdam">naka-ramdam ng matinding init ng katawan</span>. Na-shutdown ko ang laptop at agad pumunta sa clinic.</p>
+
+    <p>May binigay naman silang gamot pero <span class="ramdam">kakaiba</span> na talaga ang pakiramdam. Kinausap ko ang kaibigan ko <a href="IMG_1368.jpg" target="_blank">(See Image)</a> pero hindi ako makatawag sa parents ko dahil <strong>mahina ang signal</strong>. Kaya nagdesisyon akong pumunta na lang sa hospital malapit sa bahay.</p>
+
+    <p>Pagkasakay ko ng motor, nakita ako ng classmate ko. Tinanong niya:</p>
+    <span class="dialogue">“Uuwi ka na?”</span>
+    <p>Ang sagot ko:</p>
+    <span class="dialogue">“Hindi… ipapa-check up ko lang ‘yung UTI ko.”</span>
+
+    <p>Habang nasa daan ako, <span class="ramdam">ramdam na ramdam ko ang init ng katawan</span> at <span class="ramdam">sukang-suka na ako</span>. Pa-hinto hinto ako para uminom ng tubig. Pagdating ko sa hospital, saka pa lang ako naka-contact sa mga magulang ko.</p>
+
+    <p>Pero <strong>hindi pa d’yan nagtatapos</strong>...</p>
+
+    <p><strong>Isang linggo bago ito</strong>, may <span class="highlight">namatay na instructor</span>. At ayon sa isang <em>mangkukulam</em>, <span class="ramdam">may nakisakay sa akin—isang lalaking matangkad.</span></p>
+  </div>
+  <center>
+<a href="index.html" target="_blank">HOME</a>
+</center>
+</body>
+</html>
+</div>
+
 <div id="wallpapers" class="content">
     <!DOCTYPE html>
     <html lang="en">
